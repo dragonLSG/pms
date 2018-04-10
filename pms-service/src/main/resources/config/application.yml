@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+    datasource:
+        name: mysql
+        url: jdbc:mysql://localhost:3306/pms
+        driver-class-name: com.mysql.jdbc.Driver
+        username: root
+        password: dragon
+        # 使用druid数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        
+    thymeleaf:
+        cache: false
+     
+mybatis:
+  mapper-locations: classpath:com/dragon/mapper/*.xml
+  type-aliases-package: com.dragon.pojo
+
+#pagehelper分页插件
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+    
+    
+    

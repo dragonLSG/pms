@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dragon.mapper.TmonUseMapper">
+    <resultMap id="BaseResultMap" type="com.dragon.pojo.TmonUse">
+        <result column="dormitoryid" property="dormitoryid" jdbcType="INTEGER"/>
+        <result column="delect_use" property="delectUse" jdbcType="DECIMAL"/>
+        <result column="date" property="date" jdbcType="TIMESTAMP"/>
+        <result column="mfee" property="mfee" jdbcType="DECIMAL"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    dormitoryid, delect_use, date, mfee
+  </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dragon.pojo.TmonUseExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from tmon_use
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <delete id="deleteByExample" parameterType="com.dragon.pojo.TmonUseExample">
+        delete from tmon_use
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.dragon.pojo.TmonUse">
+    insert into tmon_use (dormitoryid, delect_use, date, 
+      mfee)
+    values (#{dormitoryid,jdbcType=INTEGER}, #{delectUse,jdbcType=DECIMAL}, #{date,jdbcType=TIMESTAMP}, 
+      #{mfee,jdbcType=DECIMAL})
+  </insert>
+    <insert id="insertSelective" parameterType="com.dragon.pojo.TmonUse">
+        insert into tmon_use
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="dormitoryid != null">
+                dormitoryid,
+            </if>
+            <if test="delectUse != null">
+                delect_use,
+            </if>
+            <if test="date != null">
+                date,
+            </if>
+            <if test="mfee != null">
+                mfee,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="dormitoryid != null">
+                #{dormitoryid,jdbcType=INTEGER},
+            </if>
+            <if test="delectUse != null">
+                #{delectUse,jdbcType=DECIMAL},
+            </if>
+            <if test="date != null">
+                #{date,jdbcType=TIMESTAMP},
+            </if>
+            <if test="mfee != null">
+                #{mfee,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.dragon.pojo.TmonUseExample" resultType="java.lang.Integer">
+        select count(*) from tmon_use
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update tmon_use
+        <set>
+            <if test="record.dormitoryid != null">
+                dormitoryid = #{record.dormitoryid,jdbcType=INTEGER},
+            </if>
+            <if test="record.delectUse != null">
+                delect_use = #{record.delectUse,jdbcType=DECIMAL},
+            </if>
+            <if test="record.date != null">
+                date = #{record.date,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.mfee != null">
+                mfee = #{record.mfee,jdbcType=DECIMAL},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update tmon_use
+        set dormitoryid = #{record.dormitoryid,jdbcType=INTEGER},
+        delect_use = #{record.delectUse,jdbcType=DECIMAL},
+        date = #{record.date,jdbcType=TIMESTAMP},
+        mfee = #{record.mfee,jdbcType=DECIMAL}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+</mapper>

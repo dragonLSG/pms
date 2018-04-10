@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dragon.mapper.TdormitoryMapper">
+    <resultMap id="BaseResultMap" type="com.dragon.pojo.Tdormitory">
+        <id column="dormitoryid" property="dormitoryid" jdbcType="INTEGER"/>
+        <result column="dormitoryName" property="dormitoryname" jdbcType="CHAR"/>
+        <result column="balance" property="balance" jdbcType="DECIMAL"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    dormitoryid, dormitoryName, balance
+  </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dragon.pojo.TdormitoryExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from tdormitory
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from tdormitory
+        where dormitoryid = #{dormitoryid,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tdormitory
+    where dormitoryid = #{dormitoryid,jdbcType=INTEGER}
+  </delete>
+    <delete id="deleteByExample" parameterType="com.dragon.pojo.TdormitoryExample">
+        delete from tdormitory
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.dragon.pojo.Tdormitory">
+    insert into tdormitory (dormitoryid, dormitoryName, balance
+      )
+    values (#{dormitoryid,jdbcType=INTEGER}, #{dormitoryname,jdbcType=CHAR}, #{balance,jdbcType=DECIMAL}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.dragon.pojo.Tdormitory">
+        insert into tdormitory
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="dormitoryid != null">
+                dormitoryid,
+            </if>
+            <if test="dormitoryname != null">
+                dormitoryName,
+            </if>
+            <if test="balance != null">
+                balance,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="dormitoryid != null">
+                #{dormitoryid,jdbcType=INTEGER},
+            </if>
+            <if test="dormitoryname != null">
+                #{dormitoryname,jdbcType=CHAR},
+            </if>
+            <if test="balance != null">
+                #{balance,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.dragon.pojo.TdormitoryExample" resultType="java.lang.Integer">
+        select count(*) from tdormitory
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update tdormitory
+        <set>
+            <if test="record.dormitoryid != null">
+                dormitoryid = #{record.dormitoryid,jdbcType=INTEGER},
+            </if>
+            <if test="record.dormitoryname != null">
+                dormitoryName = #{record.dormitoryname,jdbcType=CHAR},
+            </if>
+            <if test="record.balance != null">
+                balance = #{record.balance,jdbcType=DECIMAL},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update tdormitory
+        set dormitoryid = #{record.dormitoryid,jdbcType=INTEGER},
+        dormitoryName = #{record.dormitoryname,jdbcType=CHAR},
+        balance = #{record.balance,jdbcType=DECIMAL}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.dragon.pojo.Tdormitory">
+        update tdormitory
+        <set>
+            <if test="dormitoryname != null">
+                dormitoryName = #{dormitoryname,jdbcType=CHAR},
+            </if>
+            <if test="balance != null">
+                balance = #{balance,jdbcType=DECIMAL},
+            </if>
+        </set>
+        where dormitoryid = #{dormitoryid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.dragon.pojo.Tdormitory">
+    update tdormitory
+    set dormitoryName = #{dormitoryname,jdbcType=CHAR},
+      balance = #{balance,jdbcType=DECIMAL}
+    where dormitoryid = #{dormitoryid,jdbcType=INTEGER}
+  </update>
+</mapper>

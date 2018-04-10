@@ -1,0 +1,70 @@
+/*模块公共部分*/
+.module_wrapper {
+    width: 98%;
+    height: 100%;
+    margin: 20px auto;
+}
+
+#module_1 {
+    margin: 20px auto;
+}
+
+#module_2, #module_3，#module_4, #module_5 {
+    /*height: 48em;*/
+}
+
+/*搜索框*/
+.serch_table tr td {
+    padding: 5px !important;
+    border-width: 0px !important;
+}
+
+/*表格*/
+.module_table {
+    width: 98%;
+    margin: auto;
+    text-align: center;
+    background-color: white;
+    font-family: "Microsoft YaHei UI";
+}
+
+.module_table tr th {
+    text-align: center;
+}
+
+/*分页*/
+.pagination_bar {
+    width: 98%;
+    margin: auto;
+    text-align: center;
+}
+
+.SelectEvenNum {
+    float: left;
+    margin-top: 10px;
+}
+
+.SelectEvenNum div, .SelectEvenNum select {
+    float: left;
+}
+
+.SelectEvenNum select {
+    padding: 0px;
+}
+
+.pagination_bar .pagination {
+    position: relative;
+    margin: 5px auto;
+    display: block;
+    padding-left: 30% !important;
+}
+
+.sumNum {
+    position: relative;
+    float: right;
+    margin-top: 10px;
+}
+
+.disabled {
+    pointer-events: none;
+}
