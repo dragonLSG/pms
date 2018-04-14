@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dragon.mapper.TuserpermissionMapper">
+    <resultMap id="BaseResultMap" type="com.dragon.pojo.Tuserpermission">
+        <id column="account" property="account" jdbcType="VARCHAR"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="passwd" property="passwd" jdbcType="VARCHAR"/>
+        <collection property="permissions" ofType="String" javaType="ArrayList">
+            <result column="permission" jdbcType="VARCHAR"></result>
+        </collection>
+    </resultMap>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT tuser.account, username, passwd, permission
+    FROM  ((tuser LEFT JOIN user_role ON user_role.account = tuser.account) LEFT JOIN role_permission ON role_permission.roleId = user_role.roleId) LEFT JOIN permission ON permissionId = permission.Id
+    WHERE tuser.account = #{account,jdbcType=VARCHAR}
+    UNION ALL
+    SELECT tadmin.account, adminname AS username, passwd, permission
+    FROM  ((tadmin LEFT JOIN user_role ON user_role.account = tadmin.account) LEFT JOIN role_permission ON role_permission.roleId = user_role.roleId) LEFT JOIN permission ON permissionId = permission.Id
+    WHERE tadmin.account = #{account,jdbcType=VARCHAR}
+  </select>
+</mapper>

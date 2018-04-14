@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dragon.mapper.TadminMapper">
+    <resultMap id="BaseResultMap" type="com.dragon.pojo.Tadmin">
+        <id column="account" property="account" jdbcType="CHAR"/>
+        <result column="adminname" property="adminname" jdbcType="VARCHAR"/>
+        <result column="passwd" property="passwd" jdbcType="VARCHAR"/>
+        <result column="authority" property="authority" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    account, adminname, passwd, authority
+  </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dragon.pojo.TadminExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from tadmin
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from tadmin
+        where account = #{account,jdbcType=CHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tadmin
+    where account = #{account,jdbcType=CHAR}
+  </delete>
+    <delete id="deleteByExample" parameterType="com.dragon.pojo.TadminExample">
+        delete from tadmin
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.dragon.pojo.Tadmin">
+    insert into tadmin (account, adminname, passwd, 
+      authority)
+    values (#{account,jdbcType=CHAR}, #{adminname,jdbcType=VARCHAR}, #{passwd,jdbcType=VARCHAR}, 
+      #{authority,jdbcType=INTEGER})
+  </insert>
+    <insert id="insertSelective" parameterType="com.dragon.pojo.Tadmin">
+        insert into tadmin
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="account != null">
+                account,
+            </if>
+            <if test="adminname != null">
+                adminname,
+            </if>
+            <if test="passwd != null">
+                passwd,
+            </if>
+            <if test="authority != null">
+                authority,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="account != null">
+                #{account,jdbcType=CHAR},
+            </if>
+            <if test="adminname != null">
+                #{adminname,jdbcType=VARCHAR},
+            </if>
+            <if test="passwd != null">
+                #{passwd,jdbcType=VARCHAR},
+            </if>
+            <if test="authority != null">
+                #{authority,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.dragon.pojo.TadminExample" resultType="java.lang.Integer">
+        select count(*) from tadmin
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update tadmin
+        <set>
+            <if test="record.account != null">
+                account = #{record.account,jdbcType=CHAR},
+            </if>
+            <if test="record.adminname != null">
+                adminname = #{record.adminname,jdbcType=VARCHAR},
+            </if>
+            <if test="record.passwd != null">
+                passwd = #{record.passwd,jdbcType=VARCHAR},
+            </if>
+            <if test="record.authority != null">
+                authority = #{record.authority,jdbcType=INTEGER},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update tadmin
+        set account = #{record.account,jdbcType=CHAR},
+        adminname = #{record.adminname,jdbcType=VARCHAR},
+        passwd = #{record.passwd,jdbcType=VARCHAR},
+        authority = #{record.authority,jdbcType=INTEGER}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.dragon.pojo.Tadmin">
+        update tadmin
+        <set>
+            <if test="adminname != null">
+                adminname = #{adminname,jdbcType=VARCHAR},
+            </if>
+            <if test="passwd != null">
+                passwd = #{passwd,jdbcType=VARCHAR},
+            </if>
+            <if test="authority != null">
+                authority = #{authority,jdbcType=INTEGER},
+            </if>
+        </set>
+        where account = #{account,jdbcType=CHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.dragon.pojo.Tadmin">
+    update tadmin
+    set adminname = #{adminname,jdbcType=VARCHAR},
+      passwd = #{passwd,jdbcType=VARCHAR},
+      authority = #{authority,jdbcType=INTEGER}
+    where account = #{account,jdbcType=CHAR}
+  </update>
+</mapper>

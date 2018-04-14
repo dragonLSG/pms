@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dragon.mapper.TpaymentMapper">
+    <resultMap id="BaseResultMap" type="com.dragon.pojo.Tpayment">
+        <id column="paymentid" property="paymentid" jdbcType="BIGINT"/>
+        <result column="amount" property="amount" jdbcType="DECIMAL"/>
+        <result column="paydate" property="paydate" jdbcType="TIMESTAMP"/>
+        <result column="paystatus" property="paystatus" jdbcType="INTEGER"/>
+        <result column="payer" property="payer" jdbcType="CHAR"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    paymentid, amount, paydate, paystatus, payer
+  </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dragon.pojo.TpaymentExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from tpayment
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from tpayment
+        where paymentid = #{paymentid,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tpayment
+    where paymentid = #{paymentid,jdbcType=BIGINT}
+  </delete>
+    <delete id="deleteByExample" parameterType="com.dragon.pojo.TpaymentExample">
+        delete from tpayment
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.dragon.pojo.Tpayment">
+    insert into tpayment (paymentid, amount, paydate, 
+      paystatus, payer)
+    values (#{paymentid,jdbcType=BIGINT}, #{amount,jdbcType=DECIMAL}, #{paydate,jdbcType=TIMESTAMP}, 
+      #{paystatus,jdbcType=INTEGER}, #{payer,jdbcType=CHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.dragon.pojo.Tpayment">
+        insert into tpayment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="paymentid != null">
+                paymentid,
+            </if>
+            <if test="amount != null">
+                amount,
+            </if>
+            <if test="paydate != null">
+                paydate,
+            </if>
+            <if test="paystatus != null">
+                paystatus,
+            </if>
+            <if test="payer != null">
+                payer,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="paymentid != null">
+                #{paymentid,jdbcType=BIGINT},
+            </if>
+            <if test="amount != null">
+                #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="paydate != null">
+                #{paydate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="paystatus != null">
+                #{paystatus,jdbcType=INTEGER},
+            </if>
+            <if test="payer != null">
+                #{payer,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.dragon.pojo.TpaymentExample" resultType="java.lang.Integer">
+        select count(*) from tpayment
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update tpayment
+        <set>
+            <if test="record.paymentid != null">
+                paymentid = #{record.paymentid,jdbcType=BIGINT},
+            </if>
+            <if test="record.amount != null">
+                amount = #{record.amount,jdbcType=DECIMAL},
+            </if>
+            <if test="record.paydate != null">
+                paydate = #{record.paydate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.paystatus != null">
+                paystatus = #{record.paystatus,jdbcType=INTEGER},
+            </if>
+            <if test="record.payer != null">
+                payer = #{record.payer,jdbcType=CHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update tpayment
+        set paymentid = #{record.paymentid,jdbcType=BIGINT},
+        amount = #{record.amount,jdbcType=DECIMAL},
+        paydate = #{record.paydate,jdbcType=TIMESTAMP},
+        paystatus = #{record.paystatus,jdbcType=INTEGER},
+        payer = #{record.payer,jdbcType=CHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.dragon.pojo.Tpayment">
+        update tpayment
+        <set>
+            <if test="amount != null">
+                amount = #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="paydate != null">
+                paydate = #{paydate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="paystatus != null">
+                paystatus = #{paystatus,jdbcType=INTEGER},
+            </if>
+            <if test="payer != null">
+                payer = #{payer,jdbcType=CHAR},
+            </if>
+        </set>
+        where paymentid = #{paymentid,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.dragon.pojo.Tpayment">
+    update tpayment
+    set amount = #{amount,jdbcType=DECIMAL},
+      paydate = #{paydate,jdbcType=TIMESTAMP},
+      paystatus = #{paystatus,jdbcType=INTEGER},
+      payer = #{payer,jdbcType=CHAR}
+    where paymentid = #{paymentid,jdbcType=BIGINT}
+  </update>
+</mapper>

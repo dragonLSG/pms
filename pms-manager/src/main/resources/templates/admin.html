@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html style=""
+      class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>电力管理后台管理系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- App favicon -->
+    <link rel="shortcut icon"
+          href="/img/favicon.ico">
+    <!-- App css -->
+    <link href="css/plugins/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/index/icons.css" rel="stylesheet" type="text/css">
+    <link href="css/index/metismenu.min.css" rel="stylesheet" type="text/css">
+    <link href="css/index/style.css" rel="stylesheet" type="text/css">
+    <link href="css/index/index.css" rel="stylesheet" type="text/css">
+    <script src="js/plugins/modernizr.min.js"></script>
+    <style type="text/css">/* Chart.js */
+    @-webkit-keyframes chartjs-render-animation {
+        from {
+            opacity: 0.99
+        }
+        to {
+            opacity: 1
+        }
+    }
+
+    @keyframes chartjs-render-animation {
+        from {
+            opacity: 0.99
+        }
+        to {
+            opacity: 1
+        }
+    }
+
+    .chartjs-render-monitor {
+        -webkit-animation: chartjs-render-animation 0.001s;
+        animation: chartjs-render-animation 0.001s;
+    }</style>
+</head>
+
+<body class="">
+
+<!-- Begin page -->
+<div id="wrapper">
+
+    <!-- Top Bar Start -->
+    <div class="topbar">
+
+        <!-- LOGO -->
+        <div class="topbar-left">
+            <a href="/index.html" class="logo">
+                        <span>
+                            <img src="img/logo.png" alt="" height="40">
+                        </span>
+                <i>
+                    <img src="img/logo_sm.png" alt="" height="28">
+                </i>
+            </a>
+        </div>
+
+        <nav class="navbar-custom">
+
+            <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown"
+                       href="http://www.17sucai.com/preview/776331/2017-12-21/abstack/default/index.html#" role="button"
+                       aria-haspopup="false" aria-expanded="false">
+                        <i class="fi-bell noti-icon"></i>
+                        <span class="badge badge-danger badge-pill noti-icon-badge">4</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-lg" style="">
+
+                        <!-- item-->
+                        <div class="dropdown-item noti-title">
+                            <h6 class="m-0"><span class="float-right"><a
+                                    href="http://www.17sucai.com/preview/776331/2017-12-21/abstack/default/index.html"
+                                    class="text-dark"><small>Clear All</small></a> </span>Notification
+                            </h6>
+                        </div>
+
+                        <div class="slimScrollDiv"
+                             style="position: relative; overflow: hidden; width: auto; height: 433.886px;">
+                            <div class="slimscroll"
+                                 style="max-height: 190px; overflow: hidden; width: auto; height: 433.886px;">
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-success"><i class="mdi mdi-comment-account-outline"></i>
+                                    </div>
+                                    <p class="notify-details">Caleb Flakelar commented on Admin
+                                        <small class="text-muted">1 min ago</small>
+                                    </p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-info"><i class="mdi mdi-account-plus"></i></div>
+                                    <p class="notify-details">New user registered.
+                                        <small class="text-muted">5 hours ago</small>
+                                    </p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-danger"><i class="mdi mdi-heart"></i></div>
+                                    <p class="notify-details">Carlos Crouch liked <b>Admin</b>
+                                        <small class="text-muted">3 days ago</small>
+                                    </p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-warning"><i class="mdi mdi-comment-account-outline"></i>
+                                    </div>
+                                    <p class="notify-details">Caleb Flakelar commented on Admin
+                                        <small class="text-muted">4 days ago</small>
+                                    </p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-purple"><i class="mdi mdi-account-plus"></i></div>
+                                    <p class="notify-details">New user registered.
+                                        <small class="text-muted">7 days ago</small>
+                                    </p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-custom"><i class="mdi mdi-heart"></i></div>
+                                    <p class="notify-details">Carlos Crouch liked <b>Admin</b>
+                                        <small class="text-muted">13 days ago</small>
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="slimScrollBar"
+                                 style="background: rgb(158, 165, 171); width: 8px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;"></div>
+                            <div class="slimScrollRail"
+                                 style="width: 8px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+                        </div>
+
+                        <!-- All-->
+                        <a href="javascript:void(0);"
+                           class="dropdown-item text-center text-primary notify-item notify-all">
+                            View all <i class="fi-arrow-right"></i>
+                        </a>
+
+                    </div>
+                </li>
+
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown"
+                       href="http://www.17sucai.com/preview/776331/2017-12-21/abstack/default/index.html#" role="button"
+                       aria-haspopup="false" aria-expanded="false">
+                        <i class="fi-speech-bubble noti-icon"></i>
+                        <span class="badge badge-light badge-pill noti-icon-badge">6</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-lg">
+
+                        <!-- item-->
+                        <div class="dropdown-item noti-title">
+                            <h6 class="m-0"><span class="float-right"><a
+                                    href="http://www.17sucai.com/preview/776331/2017-12-21/abstack/default/index.html"
+                                    class="text-dark"><small>Clear All</small></a> </span>Chat
+                            </h6>
+                        </div>
+
+                        <div class="slimScrollDiv"
+                             style="position: relative; overflow: hidden; width: auto; height: 433.886px;">
+                            <div class="slimscroll"
+                                 style="max-height: 190px; overflow: hidden; width: auto; height: 433.886px;">
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon"><img src="img/avatar-2.jpg"
+                                                                  class="img-fluid rounded-circle" alt=""></div>
+                                    <p class="notify-details">Cristina Pride</p>
+                                    <p class="text-muted font-13 mb-0 user-msg">Hi, How are you? What about our next
+                                        meeting</p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon"><img src="img/avatar-3.jpg"
+                                                                  class="img-fluid rounded-circle" alt=""></div>
+                                    <p class="notify-details">Sam Garret</p>
+                                    <p class="text-muted font-13 mb-0 user-msg">Yeah everything is fine</p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon"><img src="img/avatar-4.jpg"
+                                                                  class="img-fluid rounded-circle" alt=""></div>
+                                    <p class="notify-details">Karen Robinson</p>
+                                    <p class="text-muted font-13 mb-0 user-msg">Wow that's great</p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon"><img src="img/avatar-5.jpg"
+                                                                  class="img-fluid rounded-circle" alt=""></div>
+                                    <p class="notify-details">Sherry Marshall</p>
+                                    <p class="text-muted font-13 mb-0 user-msg">Hi, How are you? What about our next
+                                        meeting</p>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon"><img src="img/avatar-6.jpg"
+                                                                  class="img-fluid rounded-circle" alt=""></div>
+                                    <p class="notify-details">Shawn Millard</p>
+                                    <p class="text-muted font-13 mb-0 user-msg">Yeah everything is fine</p>
+                                </a>
+                            </div>
+                            <div class="slimScrollBar"
+                                 style="background: rgb(158, 165, 171); width: 8px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;"></div>
+                            <div class="slimScrollRail"
+                                 style="width: 8px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+                        </div>
+
+                        <!-- All-->
+                        <a href="javascript:void(0);"
+                           class="dropdown-item text-center text-primary notify-item notify-all">
+                            View all <i class="fi-arrow-right"></i>
+                        </a>
+
+                    </div>
+                </li>
+
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown"
+                       href="http://www.17sucai.com/preview/776331/2017-12-21/abstack/default/index.html#" role="button"
+                       aria-haspopup="false" aria-expanded="false">
+                        <img src="img/avatar-1.jpg" alt="user" class="rounded-circle"> <span class="ml-1"> <shiro:principal
+                            property="username"/><i
+                            class="mdi mdi-chevron-down"></i> </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right profile-dropdown" x-placement="bottom-end"
+                         style="position: absolute; transform: translate3d(130px, 70px, 0px); top: 0px; left: 0px; will-change: transform;">
+                        <!-- item-->
+                        <div class="dropdown-item noti-title">
+                            <h6 class="text-overflow m-0">Welcome !</h6>
+                        </div>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="fi-head"></i> <span>My Account</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="fi-cog"></i> <span>Settings</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="fi-help"></i> <span>Support</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="fi-lock"></i> <span>Lock Screen</span>
+                        </a>
+
+                        <!-- item-->
+                        <a id="logoutBtn" href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="fi-power"></i> <span>Logout</span>
+                        </a>
+
+                    </div>
+                </li>
+
+            </ul>
+
+            <ul class="list-inline menu-left mb-0">
+                <li class="float-left">
+                    <button class="button-menu-mobile open-left waves-light waves-effect">
+                        <i class="dripicons-menu"></i>
+                    </button>
+                </li>
+                <li class="hide-phone app-search">
+                    <form role="search" class="">
+                        <input type="text" placeholder="Search..." class="form-control" style="border-radius: 30px;">
+                        <a href="http://www.17sucai.com/preview/776331/2017-12-21/abstack/default/index.html"><i
+                                class="fa fa-search"></i></a>
+                    </form>
+                </li>
+            </ul>
+
+        </nav>
+
+    </div>
+    <!-- Top Bar End -->
+
+    <!-- ========== Left Sidebar Start ========== -->
+    <div class="left side-menu">
+        <div class="slimScrollDiv active" style="position: relative; overflow: hidden; width: auto; height: 712.514px;">
+            <div class="slimScroll-menu in" id="remove-scroll"
+                 style="overflow: hidden; width: auto; height: 712.514px;">
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <!-- Left Menu Start -->
+                    <ul class="metismenu in" id="side-menu">
+                        <li class="menu-title">菜单栏</li>
+
+                        <li class="menu_item active" id="menu_1" style="background-color: #DCDCDC">
+                            <a href="javascript: void(0);">
+                                <i class="fi-bar-graph-2"></i><span
+                                    class="badge badge-danger badge-pill pull-right">3</span> <span> 数据统计 </span>
+                            </a>
+                        </li>
+
+                        <li class="menu_item" id="menu_2">
+                            <a href="javascript: void(0);"><i class="fi-head"></i><span> 用户管理 </span> <span
+                                    class="menu-arrow"></span></a>
+                        </li>
+                        <!--menu-arrow-->
+                        <li class="menu_item" id="menu_3">
+                            <a href="javascript: void(0);"><i class="fi-location"></i><span> 宿舍管理 </span> <span
+                                    class="menu-arrow"></span></a>
+                        </li>
+
+                        <li class="menu_item" id="menu_4">
+                            <a href="javascript: void(0);"><i class="fi-clipboard"></i><span> 通告管理 </span> <span
+                                    class="menu-arrow"></span></a>
+                        </li>
+
+                        <li class="menu_item" id="menu_5">
+                            <a href="javascript: void(0);"><i class="fi-mail"></i><span
+                                    class="badge badge-warning pull-right">09</span> <span> 反馈管理 </span></a>
+                        </li>
+
+                        <li class="menu_item" id="menu_6">
+                            <a href="javascript: void(0);"><i class="fi-paper"></i> <span> 缴费管理 </span> <span
+                                    class="menu-arrow"></span></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Sidebar -->
+                <div class="clearfix"></div>
+
+            </div>
+            <div class="slimScrollBar"
+                 style="background: rgb(158, 165, 171); width: 8px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 713.028px;"></div>
+            <div class="slimScrollRail"
+                 style="width: 8px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+        </div>
+        <!-- Sidebar -left -->
+
+    </div>
+    <!-- Left Sidebar End -->
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <!--数据统计-->
+            <div class="container-fluid" id="module_1" style="display: block">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <h4 class="page-title float-left">Dashboard</h4>
+
+                            <ol class="breadcrumb float-right">
+                                <li class="breadcrumb-item"><a
+                                        href="http://www.17sucai.com/preview/776331/2017-12-21/abstack/default/index.html#">管理系统</a>
+                                </li>
+                                <li class="breadcrumb-item active">Dashboard</li>
+                            </ol>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+                        <div class="card-box tilebox-one">
+                            <i class="fi-box float-right"></i>
+                            <h6 class="text-muted text-uppercase mb-3">Orders</h6>
+                            <h4 class="mb-3" data-plugin="counterup">1,587</h4>
+                            <span class="badge badge-primary"> +11% </span> <span
+                                class="text-muted ml-2 vertical-middle">From previous period</span>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+                        <div class="card-box tilebox-one">
+                            <i class="fi-layers float-right"></i>
+                            <h6 class="text-muted text-uppercase mb-3">Revenue</h6>
+                            <h4 class="mb-3">$<span data-plugin="counterup">46,782</span></h4>
+                            <span class="badge badge-primary"> -29% </span> <span
+                                class="text-muted ml-2 vertical-middle">From previous period</span>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+                        <div class="card-box tilebox-one">
+                            <i class="fi-tag float-right"></i>
+                            <h6 class="text-muted text-uppercase mb-3">Average Price</h6>
+                            <h4 class="mb-3">$<span data-plugin="counterup">15.9</span></h4>
+                            <span class="badge badge-primary"> 0% </span> <span class="text-muted ml-2 vertical-middle">From previous period</span>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+                        <div class="card-box tilebox-one">
+                            <i class="fi-briefcase float-right"></i>
+                            <h6 class="text-muted text-uppercase mb-3">Product Sold</h6>
+                            <h4 class="mb-3" data-plugin="counterup">1,890</h4>
+                            <span class="badge badge-primary"> +89% </span> <span
+                                class="text-muted ml-2 vertical-middle">Last year</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-7">
+                        <div class="card-box">
+                            <div class="chartjs-size-monitor"
+                                 style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                                <div class="chartjs-size-monitor-expand"
+                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+                                </div>
+                                <div class="chartjs-size-monitor-shrink"
+                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+                                </div>
+                            </div>
+                            <h4 class="header-title">Transactions History</h4>
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="text-center mt-3">
+                                        <h6 class="font-normal text-muted font-14">Conversion Rate</h6>
+                                        <h6 class="font-18"><i
+                                                class="mdi mdi-arrow-up-bold-hexagon-outline text-success"></i> <span
+                                                class="text-dark">1.78%</span>
+                                            <small></small>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="text-center mt-3">
+                                        <h6 class="font-normal text-muted font-14">Average Order Value</h6>
+                                        <h6 class="font-18"><i
+                                                class="mdi mdi-arrow-up-bold-hexagon-outline text-success"></i> <span
+                                                class="text-dark">25.87</span>
+                                            <small>USD</small>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="text-center mt-3">
+                                        <h6 class="font-normal text-muted font-14">Total Wallet Balance</h6>
+                                        <h6 class="font-18"><i
+                                                class="mdi mdi-arrow-up-bold-hexagon-outline text-success"></i> <span
+                                                class="text-dark">87,4517</span>
+                                            <small>USD</small>
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <canvas id="transactions-chart" height="459" class="mt-4 chartjs-render-monitor" width="855"
+                                    style="display: block; height: 401px; width: 747px;"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-xl-5">
+                        <div class="card-box">
+                            <div class="chartjs-size-monitor"
+                                 style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                                <div class="chartjs-size-monitor-expand"
+                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+                                </div>
+                                <div class="chartjs-size-monitor-shrink"
+                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+                                </div>
+                            </div>
+                            <h4 class="header-title">Sales History</h4>
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="text-center mt-3">
+                                        <h6 class="font-normal text-muted font-14">Conversion Rate</h6>
+                                        <h6 class="font-18"><i
+                                                class="mdi mdi-arrow-up-bold-hexagon-outline text-success"></i> <span
+                                                class="text-dark">3.94%</span>
+                                            <small></small>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="text-center mt-3">
+                                        <h6 class="font-normal text-muted font-14">Average Sales</h6>
+                                        <h6 class="font-18"><i
+                                                class="mdi mdi-arrow-down-bold-hexagon-outline text-danger"></i> <span
+                                                class="text-dark">16.25</span>
+                                            <small>USD</small>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="text-center mt-3">
+                                        <h6 class="font-normal text-muted font-14">Total Sales</h6>
+                                        <h6 class="font-18"><i
+                                                class="mdi mdi-arrow-up-bold-hexagon-outline text-success"></i> <span
+                                                class="text-dark">124,858.67</span>
+                                            <small>USD</small>
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <canvas id="sales-history" height="459" class="mt-4 chartjs-render-monitor" width="587"
+                                    style="display: block; height: 401px; width: 513px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card-box">
+                            <h4 class="header-title mb-4">Messages</h4>
+
+                            <div class="slimScrollDiv"
+                                 style="position: relative; overflow: hidden; width: auto; height: 433.886px;">
+                                <div class="inbox-widget slimscroll"
+                                     style="max-height: 370px; overflow: hidden; width: auto; height: 433.886px;">
+                                    <a href="http://www.17sucai.com/preview/776331/2017-12-21/abstack/default/index.html#">
+                                        <div class="inbox-item">
+                                            <div class="inbox-item-img"><img src="img/avatar-1.jpg"
+                                                                             class="rounded-circle bx-shadow-lg" alt="">
+                                            </div>
+                                            <p class="inbox-item-author">Chadengle</p>
+                                            <p class="inbox-item-text">Hey! there I'm available...</p>
+                                            <p class="inbox-item-date">13:40 PM</p>
+                                        </div>
+                                    </a>
+                                    <a href="http://www.17sucai.com/preview/776331/2017-12-21/abstack/default/index.html#">
+                                        <div class="inbox-item">
+                                            <div class="inbox-item-img"><img src="img/avatar-2.jpg"
+                                                                             class="rounded-circle bx-shadow-lg" alt="">
+                                            </div>
+                                            <p class="inbox-item-author">Tomaslau</p>
+                                            <p class="inbox-item-text">I've finished it! See you so...</p>
+                                            <p class="inbox-item-date">13:34 PM</p>
+                                        </div>
+                                    </a>
+                                    <a href="http://www.17sucai.com/preview/776331/2017-12-21/abstack/default/index.html#">
+                                        <div class="inbox-item">
+                                            <div class="inbox-item-img"><img src="img/avatar-3.jpg"
+                                                                             class="rounded-circle bx-shadow-lg" alt="">
+                                            </div>
+                                            <p class="inbox-item-author">Stillnotdavid</p>
+                                            <p class="inbox-item-text">This theme is awesome!</p>
+                                            <p class="inbox-item-date">13:17 PM</p>
+                                        </div>
+                                    </a>
+                                    <a href="http://www.17sucai.com/preview/776331/2017-12-21/abstack/default/index.html#">
+                                        <div class="inbox-item">
+                                            <div class="inbox-item-img"><img src="img/avatar-4.jpg"
+                                                                             class="rounded-circle bx-shadow-lg" alt="">
+                                            </div>
+                                            <p class="inbox-item-author">Kurafire</p>
+                                            <p class="inbox-item-text">Nice to meet you</p>
+                                            <p class="inbox-item-date">12:20 PM</p>
+                                        </div>
+                                    </a>
+                                    <a href="http://www.17sucai.com/preview/776331/2017-12-21/abstack/default/index.html#">
+                                        <div class="inbox-item">
+                                            <div class="inbox-item-img"><img src="img/avatar-5.jpg"
+                                                                             class="rounded-circle bx-shadow-lg" alt="">
+                                            </div>
+                                            <p class="inbox-item-author">Shahedk</p>
+                                            <p class="inbox-item-text">Hey! there I'm available...</p>
+                                            <p class="inbox-item-date">10:15 AM</p>
+                                        </div>
+                                    </a>
+                                    <a href="http://www.17sucai.com/preview/776331/2017-12-21/abstack/default/index.html#">
+                                        <div class="inbox-item">
+                                            <div class="inbox-item-img"><img src="img/avatar-6.jpg"
+                                                                             class="rounded-circle bx-shadow-lg" alt="">
+                                            </div>
+                                            <p class="inbox-item-author">Adhamdannaway</p>
+                                            <p class="inbox-item-text">This theme is awesome!</p>
+                                            <p class="inbox-item-date">9:56 AM</p>
+                                        </div>
+                                    </a>
+                                    <a href="http://www.17sucai.com/preview/776331/2017-12-21/abstack/default/index.html#">
+                                        <div class="inbox-item">
+                                            <div class="inbox-item-img"><img src="img/avatar-8.jpg"
+                                                                             class="rounded-circle bx-shadow-lg" alt="">
+                                            </div>
+                                            <p class="inbox-item-author">Arashasghari</p>
+                                            <p class="inbox-item-text">Hey! there I'm available...</p>
+                                            <p class="inbox-item-date">10:15 AM</p>
+                                        </div>
+                                    </a>
+                                    <a href="http://www.17sucai.com/preview/776331/2017-12-21/abstack/default/index.html#">
+                                        <div class="inbox-item">
+                                            <div class="inbox-item-img"><img src="img/avatar-9.jpg"
+                                                                             class="rounded-circle bx-shadow-lg" alt="">
+                                            </div>
+                                            <p class="inbox-item-author">Joshaustin</p>
+                                            <p class="inbox-item-text">I've finished it! See you so...</p>
+                                            <p class="inbox-item-date">9:56 AM</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="slimScrollBar"
+                                     style="background: rgb(158, 165, 171); width: 8px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 257.809px;"></div>
+                                <div class="slimScrollRail"
+                                     style="width: 8px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card-box">
+                            <h4 class="header-title mb-4">Latest Comments</h4>
+
+                            <div class="slimScrollDiv"
+                                 style="position: relative; overflow: hidden; width: auto; height: 433.886px;">
+                                <div class="comment-list slimscroll"
+                                     style="max-height: 370px; overflow: hidden; width: auto; height: 433.886px;">
+                                    <a href="http://www.17sucai.com/preview/776331/2017-12-21/abstack/default/index.html#">
+                                        <div class="comment-box-item">
+                                            <div class="badge badge-pill badge-success">Ubold - Admin</div>
+                                            <p class="commnet-item-date">1 month ago</p>
+                                            <h6 class="commnet-item-msg">Do you have any plans to add a vertical
+                                                menu?</h6>
+                                            <p class="commnet-item-user">Ubold User</p>
+                                        </div>
+                                    </a>
+                                    <a href="http://www.17sucai.com/preview/776331/2017-12-21/abstack/default/index.html#">
+                                        <div class="comment-box-item">
+                                            <div class="badge badge-pill badge-warning">Adminox - Admin</div>
+                                            <p class="commnet-item-date">1 month ago</p>
+                                            <h6 class="commnet-item-msg">Hello, what is your plan to upgrade Bootstrap 4
+                                                versions? Beta or wait for stable?</h6>
+                                            <p class="commnet-item-user">Ubold User</p>
+                                        </div>
+                                    </a>
+                                    <a href="http://www.17sucai.com/preview/776331/2017-12-21/abstack/default/index.html#">
+                                        <div class="comment-box-item">
+                                            <div class="badge badge-pill badge-primary">Staro - Landing</div>
+                                            <p class="commnet-item-date">1 month ago</p>
+                                            <h6 class="commnet-item-msg">Hi coderthemes – do you have PSD for this admin
+                                                UI? I could really use it.</h6>
+                                            <p class="commnet-item-user">Ubold User</p>
+                                        </div>
+                                    </a>
+                                    <a href="http://www.17sucai.com/preview/776331/2017-12-21/abstack/default/index.html#">
+                                        <div class="comment-box-item">
+                                            <div class="badge badge-pill badge-dark">Ubold - Admin</div>
+                                            <p class="commnet-item-date">1 month ago</p>
+                                            <h6 class="commnet-item-msg">Do you have any plans to add a vertical
+                                                menu?</h6>
+                                            <p class="commnet-item-user">Ubold User</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="slimScrollBar"
+                                     style="background: rgb(158, 165, 171); width: 8px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 310.423px;"></div>
+                                <div class="slimScrollRail"
+                                     style="width: 8px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card-box">
+                            <h4 class="header-title mb-4">Last Transactions</h4>
+
+                            <div class="slimScrollDiv"
+                                 style="position: relative; overflow: hidden; width: auto; height: 433.886px;">
+                                <ul class="list-unstyled transaction-list slimscroll mb-0"
+                                    style="max-height: 370px; overflow: hidden; width: auto; height: 433.886px;">
+                                    <li>
+                                        <i class="dripicons-arrow-down text-success"></i>
+                                        <span class="tran-text">Advertising</span>
+                                        <span class="pull-right text-success tran-price">+$230</span>
+                                        <span class="pull-right text-muted">07/09/2017</span>
+                                        <span class="clearfix"></span>
+                                    </li>
+
+                                    <li>
+                                        <i class="dripicons-arrow-up text-danger"></i>
+                                        <span class="tran-text">Support licence</span>
+                                        <span class="pull-right text-danger tran-price">-$965</span>
+                                        <span class="pull-right text-muted">07/09/2017</span>
+                                        <span class="clearfix"></span>
+                                    </li>
+
+                                    <li>
+                                        <i class="dripicons-arrow-down text-success"></i>
+                                        <span class="tran-text">Extended licence</span>
+                                        <span class="pull-right text-success tran-price">+$830</span>
+                                        <span class="pull-right text-muted">07/09/2017</span>
+                                        <span class="clearfix"></span>
+                                    </li>
+
+                                    <li>
+                                        <i class="dripicons-arrow-down text-success"></i>
+                                        <span class="tran-text">Advertising</span>
+                                        <span class="pull-right text-success tran-price">+$230</span>
+                                        <span class="pull-right text-muted">05/09/2017</span>
+                                        <span class="clearfix"></span>
+                                    </li>
+
+                                    <li>
+                                        <i class="dripicons-arrow-up text-danger"></i>
+                                        <span class="tran-text">New plugins added</span>
+                                        <span class="pull-right text-danger tran-price">-$452</span>
+                                        <span class="pull-right text-muted">05/09/2017</span>
+                                        <span class="clearfix"></span>
+                                    </li>
+
+                                    <li>
+                                        <i class="dripicons-arrow-down text-success"></i>
+                                        <span class="tran-text">Google Inc.</span>
+                                        <span class="pull-right text-success tran-price">+$230</span>
+                                        <span class="pull-right text-muted">04/09/2017</span>
+                                        <span class="clearfix"></span>
+                                    </li>
+
+                                    <li>
+                                        <i class="dripicons-arrow-up text-danger"></i>
+                                        <span class="tran-text">Facebook Ad</span>
+                                        <span class="pull-right text-danger tran-price">-$364</span>
+                                        <span class="pull-right text-muted">03/09/2017</span>
+                                        <span class="clearfix"></span>
+                                    </li>
+
+                                    <li>
+                                        <i class="dripicons-arrow-down text-success"></i>
+                                        <span class="tran-text">New sale</span>
+                                        <span class="pull-right text-success tran-price">+$230</span>
+                                        <span class="pull-right text-muted">03/09/2017</span>
+                                        <span class="clearfix"></span>
+                                    </li>
+
+                                    <li>
+                                        <i class="dripicons-arrow-down text-success"></i>
+                                        <span class="tran-text">Advertising</span>
+                                        <span class="pull-right text-success tran-price">+$230</span>
+                                        <span class="pull-right text-muted">29/08/2017</span>
+                                        <span class="clearfix"></span>
+                                    </li>
+
+                                    <li>
+                                        <i class="dripicons-arrow-up text-danger"></i>
+                                        <span class="tran-text">Support licence</span>
+                                        <span class="pull-right text-danger tran-price">-$854</span>
+                                        <span class="pull-right text-muted">27/08/2017</span>
+                                        <span class="clearfix"></span>
+                                    </li>
+                                </ul>
+                                <div class="slimScrollBar"
+                                     style="background: rgb(158, 165, 171); width: 8px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 319.106px;"></div>
+                                <div class="slimScrollRail"
+                                     style="width: 8px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!--用户管理模块-->
+            <div class="col-md-12 padding-0" id="module_2" style="display: none">
+                <div class="row module_wrapper">
+                    <div class="col-md-3">
+                        <div class="serchBar">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">用户搜索</div>
+                                <div class="panel-body">
+                                    <table style="border:0;" class="serch_table">
+                                        <tr>
+                                            <td><span>用户名</span></td>
+                                            <td><input type="text"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>账号</span></td>
+                                            <td><input type="text"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>宿舍</span></td>
+                                            <td><input type="text"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>状态</span></td>
+                                            <td><select>
+                                                <option value="2" selected>全部</option>
+                                                <option value="1">在校</option>
+                                                <option value="0">离校</option>
+                                            </select></td>
+                                        </tr>
+                                    </table>
+                                    <button class="btn" type="button" style="margin:10px auto;"
+                                            value="搜索">搜索
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">操作</div>
+                                <div class="panel-body">
+                                    <button class="btn" type="button" value="添加"
+                                            style="float: left;">添加用户
+                                    </button>
+                                    <button id="deleteBtn2" class="btn" type="button" value="删除选中"
+                                            style="float: right">删除选中
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="panel panel-default module_table_panel">
+                            <div class="panel-heading">用户列表</div>
+                            <div class="panel-body">
+                                <table class="table table-bordered table-hover module_table"
+                                       id="table_2">
+                                    <thead>
+                                    <tr>
+                                        <th><input type="checkbox">全选</th>
+                                        <th>账号</th>
+                                        <th>用户名</th>
+                                        <th>宿舍名</th>
+                                        <th>联系号码</th>
+                                        <th>邮箱</th>
+                                        <th>状态</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                                <div class="pagination_bar bar_2">
+                                    <div class="SelectEvenNum">
+                                        <div>每页</div>
+                                        <select>
+                                            <option>10</option>
+                                            <option>20</option>
+                                            <option>30</option>
+                                        </select>
+                                        <div>行</div>
+                                    </div>
+
+                                    <ul class="pagination">
+                                        <li><a href="javascript:void(0);">&laquo;</a></li>
+                                        <li><a href="javascript:void(0);">&lsaquo;</a></li>
+                                        <li class="active"><a href="javascript:void(0);">1</a></li>
+                                        <li><a href="javascript:void(0);">2</a></li>
+                                        <li><a href="javascript:void(0);">3</a></li>
+                                        <li><a href="javascript:void(0);">4</a></li>
+                                        <li><a href="javascript:void(0);">5</a></li>
+                                        <li><a href="javascript:void(0);">&rsaquo;</a></li>
+                                        <li><a href="javascript:void(0);">&raquo;</a></li>
+                                    </ul>
+                                    <div class="sumNum">共1000条数据</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--宿舍管理模块-->
+            <div class="col-md-12 padding-0" id="module_3" style="display: none">
+                <div class="module_wrapper">
+                    <div class="col-md-3">
+                        <div class="serchBar">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">宿舍搜索</div>
+                                <div class="panel-body">
+                                    <table style="border:0;" class="serch_table">
+                                        <tr>
+                                            <td><span>区</span></td>
+                                            <td><select>
+                                                <option selected></option>
+                                                <option>东</option>
+                                                <option>西</option>
+                                            </select></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>栋</span></td>
+                                            <td><select>
+                                                <option selected></option>
+                                                <option>一</option>
+                                                <option>二</option>
+                                                <option>三</option>
+                                                <option>四</option>
+                                                <option>五</option>
+                                                <option>六</option>
+                                                <option>七</option>
+                                                <option>八</option>
+                                                <option>九</option>
+                                                <option>十</option>
+                                                <option>十一</option>
+                                                <option>十二</option>
+                                            </select></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>号</span></td>
+                                            <td><input type="text"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <button class="btn" type="button"
+                                                        style="margin:10px auto;">搜索
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr style="border-top:1px solid #E1E1E1; ">
+                                            <td><span>宿舍名</span></td>
+                                            <td><input type="text"></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <button class="btn" type="button"
+                                                        style="margin:10px auto;">搜索
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="operator">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">操作</div>
+                                <div class="panel-body">
+                                    <button class="btn" data-toggle="modal" data-target="#addDorm"
+                                            value="添加" style="float: left;">添加宿舍
+                                    </button>
+                                    <button id="deleteBtn3" class="btn" type="button" value="删除选中"
+                                            style="float: right">删除选中
+                                    </button>
+                                    <div class="modal fade" id="addDorm" tabindex="-1"
+                                         role="dialog" aria-labelledby="myModalLabel"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-hidden="true">&times;
+                                                    </button>
+                                                    <h4 class="modal-title" id="myModalLabel">填写宿舍信息</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <table style="border:0;margin: auto">
+                                                        <tr>
+                                                            <td><span>宿舍名</span></td>
+                                                            <td><input type="text"/></td>
+                                                        </tr>
+                                                    </table>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default"
+                                                            data-dismiss="modal">取消
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary">
+                                                        提交信息
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="panel panel-default module_table_panel">
+                            <div class="panel-heading">宿舍列表</div>
+                            <div class="panel-body">
+                                <table class="table table-bordered table-hover module_table"
+                                       id="table_3">
+                                    <thead>
+                                    <tr>
+                                        <th><input type="checkbox">全选</th>
+                                        <th>宿舍号</th>
+                                        <th>宿舍名</th>
+                                        <th>余额/元</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                                <div class="pagination_bar bar_3">
+                                    <div class="SelectEvenNum">
+                                        <div>每页</div>
+                                        <select>
+                                            <option>13</option>
+                                            <option>18</option>
+                                            <option>25</option>
+                                            <option>30</option>
+                                        </select>
+                                        <div>行</div>
+                                    </div>
+                                    <ul class="pagination">
+                                        <li><a href="javascript:void(0);">&laquo;</a></li>
+                                        <li><a href="javascript:void(0);">&lsaquo;</a></li>
+                                        <li class="active"><a href="javascript:void(0);">1</a></li>
+                                        <li><a href="javascript:void(0);">2</a></li>
+                                        <li><a href="javascript:void(0);">3</a></li>
+                                        <li><a href="javascript:void(0);">4</a></li>
+                                        <li><a href="javascript:void(0);">5</a></li>
+                                        <li><a href="javascript:void(0);">&rsaquo;</a></li>
+                                        <li><a href="javascript:void(0);">&raquo;</a></li>
+                                    </ul>
+                                    <div class="sumNum">共1000条数据</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--通告管理模块-->
+            <div class="col-md-12 padding-0" id="module_4" style="display: none">
+                <div class="module_wrapper">
+                    <div class="col-md-3">
+                        <div class="serchBar">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">通告搜索</div>
+                                <div class="panel-body">
+                                    <table style="border:0;" class="serch_table">
+                                        <tr>
+                                            <td><span>标题</span></td>
+                                            <td><input type="text"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>发布人</span></td>
+                                            <td><input type="text"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>发布时间</span></td>
+                                            <td>
+                                                <div>
+                                                    始：<input type="date">
+                                                </div>
+                                                <div>
+                                                    终：<input type="date">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <button class="btn" type="button" style="margin:10px auto;"
+                                            value="搜索">搜索
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">操作</div>
+                                <div class="panel-body">
+                                    <button id="addNotice" class="btn" type="button" value="添加"
+                                            style="float: left;">发布通告
+                                    </button>
+                                    <button id="deleteBtn4" class="btn" type="button" value="删除选中"
+                                            style="float: right">删除选中
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="panel panel-default module_table_panel">
+                            <div class="panel-heading">通告列表</div>
+                            <div class="panel-body">
+                                <table class="table table-bordered table-hover module_table"
+                                       id="table_4">
+                                    <thead>
+                                    <tr>
+                                        <th><input type="checkbox">全选</th>
+                                        <th>ID</th>
+                                        <th>标题</th>
+                                        <th>内容</th>
+                                        <th>发布人</th>
+                                        <th>发布时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                                <div class="pagination_bar bar_4">
+                                    <div class="SelectEvenNum">
+                                        <div>每页</div>
+                                        <select>
+                                            <option>10</option>
+                                            <option>20</option>
+                                            <option>30</option>
+                                        </select>
+                                        <div>行</div>
+                                    </div>
+
+                                    <ul class="pagination">
+                                        <li><a href="javascript:void(0);">&laquo;</a></li>
+                                        <li><a href="javascript:void(0);">&lsaquo;</a></li>
+                                        <li class="active"><a href="javascript:void(0);">1</a></li>
+                                        <li><a href="javascript:void(0);">2</a></li>
+                                        <li><a href="javascript:void(0);">3</a></li>
+                                        <li><a href="javascript:void(0);">4</a></li>
+                                        <li><a href="javascript:void(0);">5</a></li>
+                                        <li><a href="javascript:void(0);">&rsaquo;</a></li>
+                                        <li><a href="javascript:void(0);">&raquo;</a></li>
+                                    </ul>
+                                    <div class="sumNum">共1000条数据</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="noticeContent">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+
+                            <!-- 模态框头部 -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">通告内容：</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- 模态框主体 -->
+                            <div class="modal-body">
+                                操作失败，请稍后重试！
+                            </div>
+
+                            <!-- 模态框底部 -->
+                            <div class="modal-footer">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="noticeUpdate">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content" id="">
+                            <!-- 模态框头部 -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Title: <input id='noticeTitle' type='text' value=''></h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- 模态框主体 -->
+                            <div class="modal-body">
+                                <div id="noticeRichEditor"></div>
+                            </div>
+
+                            <!-- 模态框底部 -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                </button>
+                                <button type="button" class="btn btn-default" onclick="submitNotice()">
+                                    提交更改
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--反馈管理模块-->
+            <div class="col-md-12 padding-0" id="module_5" style="display: none">
+                <div class="module_wrapper">
+                    <div class="col-md-3">
+                        <div class="serchBar">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">反馈搜索</div>
+                                <div class="panel-body">
+                                    <table style="border:0;" class="serch_table">
+                                        <tr>
+                                            <td><span>标题</span></td>
+                                            <td><input type="text"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>反馈日期</span></td>
+                                            <td>
+                                                <div>
+                                                    始：<input type="date">
+                                                </div>
+                                                <div>
+                                                    终：<input type="date">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>状态</span></td>
+                                            <td><select>
+                                                <option value="2" selected>全部</option>
+                                                <option value="1">已处理</option>
+                                                <option value="0">未处理</option>
+                                            </select></td>
+                                        </tr>
+                                    </table>
+                                    <button class="btn" type="button" style="margin:10px auto;"
+                                            value="搜索">搜索
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">操作</div>
+                                <div class="panel-body">
+                                    <button id="deleteBtn5" class="btn" type="button" value="删除选中"
+                                            style="margin: auto">删除选中
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="panel panel-default module_table_panel">
+                            <div class="panel-heading">反馈列表</div>
+                            <div class="panel-body">
+                                <table class="table table-bordered table-hover module_table"
+                                       id="table_5">
+                                    <thead>
+                                    <tr>
+                                        <th><input type="checkbox">全选</th>
+                                        <th>ID</th>
+                                        <th>标题</th>
+                                        <th>内容</th>
+                                        <th>反馈人</th>
+                                        <th>状态</th>
+                                        <th>反馈时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                                <div class="pagination_bar bar_5">
+                                    <div class="SelectEvenNum">
+                                        <div>每页</div>
+                                        <select>
+                                            <option>10</option>
+                                            <option>20</option>
+                                            <option>30</option>
+                                        </select>
+                                        <div>行</div>
+                                    </div>
+
+                                    <ul class="pagination">
+                                        <li><a href="javascript:void(0);">&laquo;</a></li>
+                                        <li><a href="javascript:void(0);">&lsaquo;</a></li>
+                                        <li class="active"><a href="javascript:void(0);">1</a></li>
+                                        <li><a href="javascript:void(0);">2</a></li>
+                                        <li><a href="javascript:void(0);">3</a></li>
+                                        <li><a href="javascript:void(0);">4</a></li>
+                                        <li><a href="javascript:void(0);">5</a></li>
+                                        <li><a href="javascript:void(0);">&rsaquo;</a></li>
+                                        <li><a href="javascript:void(0);">&raquo;</a></li>
+                                    </ul>
+                                    <div class="sumNum">共1000条数据</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="fbContent">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+
+                            <!-- 模态框头部 -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">反馈内容：</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- 模态框主体 -->
+                            <div class="modal-body">
+                                内容获取失败，请稍后重试！
+                            </div>
+
+                            <!-- 模态框底部 -->
+                            <div class="modal-footer">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--缴费管理模块-->
+            <div class="col-md-12 padding-0" id="module_6" style="display: none">
+                <div class="module_wrapper">
+                    <div class="col-md-3">
+                        <div class="serchBar">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">缴费记录搜索</div>
+                                <div class="panel-body">
+                                    <table style="border:0;" class="serch_table">
+                                        <tr>
+                                            <td><span>标题</span></td>
+                                            <td><input type="text"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>状态</span></td>
+                                            <td><select>
+                                                <option selected>全部</option>
+                                                <option>未处理</option>
+                                                <option>已处理</option>
+                                            </select></td>
+                                        </tr>
+                                    </table>
+                                    <button class="btn" type="button" style="margin:10px auto;"
+                                            value="搜索">搜索
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">操作</div>
+                                <div class="panel-body">
+                                    <button class="btn" type="button" value="删除选中"
+                                            style="margin: auto">删除选中
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="panel panel-default module_table_panel">
+                            <div class="panel-heading">缴费记录列表</div>
+                            <div class="panel-body">
+                                <table class="table table-bordered table-hover module_table"
+                                       id="table_6">
+                                    <thead>
+                                    <tr>
+                                        <th><input type="checkbox">全选</th>
+                                        <th>账单号</th>
+                                        <th>金额</th>
+                                        <th>支付人</th>
+                                        <th>宿舍</th>
+                                        <th>状态</th>
+                                        <th>缴纳时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><input type="checkbox"></td>
+                                        <td>1234567</td>
+                                        <td>1023.23</td>
+                                        <td>Kim</td>
+                                        <td>西三536</td>
+                                        <td>已支付</td>
+                                        <td>2018-03-11</td>
+                                        <td><a href="javascript:void(0);">删除</a> <a href="javascript:void(0);">确认处理</a>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                                <div class="pagination_bar bar_6">
+                                    <div class="SelectEvenNum">
+                                        <div>每页</div>
+                                        <select>
+                                            <option>10</option>
+                                            <option>20</option>
+                                            <option>30</option>
+                                        </select>
+                                        <div>行</div>
+                                    </div>
+
+                                    <ul class="pagination">
+                                        <li><a href="javascript:void(0);">&laquo;</a></li>
+                                        <li><a href="javascript:void(0);">&lsaquo;</a></li>
+                                        <li class="active"><a href="javascript:void(0);">1</a></li>
+                                        <li><a href="javascript:void(0);">2</a></li>
+                                        <li><a href="javascript:void(0);">3</a></li>
+                                        <li><a href="javascript:void(0);">4</a></li>
+                                        <li><a href="javascript:void(0);">5</a></li>
+                                        <li><a href="javascript:void(0);">&rsaquo;</a></li>
+                                        <li><a href="javascript:void(0);">&raquo;</a></li>
+                                    </ul>
+                                    <div class="sumNum">共1000条数据</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- content -->
+
+        <footer class="footer text-right">
+            2017 - 2018 © Abstack. - Coderthemes.com
+        </footer>
+
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- End Right content here -->
+    <!-- ============================================================== -->
+
+    <!-- 500 处理模态框 -->
+    <div class="modal fade" id="exceptionPanel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- 模态框头部 -->
+                <div class="modal-header">
+                    <h4 class="modal-title">出错信息：</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- 模态框主体 -->
+                <div class="modal-body">
+                    操作失败，请稍后重试！
+                </div>
+
+                <!-- 模态框底部 -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- END wrapper -->
+
+
+<!-- jQuery  -->
+<script src="js/jquery.min.js"></script>
+<script src="js/plugins/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu.min.js"></script>
+<script src="js/plugins/waves.js"></script>
+<script src="js/index/jquery.slimscroll.js"></script>
+<script src="js/index/jquery.waypoints.min.js"></script>
+<script src="js/index/jquery.counterup.min.js"></script>
+
+<!-- Chart JS -->
+<script src="js/plugins/chart.bundle.js"></script>
+
+<!-- init dashboard -->
+<script src="js/index/jquery.dashboard.init.js"></script>
+
+<!-- App js -->
+<script src="js/index/jquery.core.js"></script>
+<script src="js/index/jquery.app.js"></script>
+
+<!--index js-->
+<script src="js/index/event.js"></script>
+
+<!--rich editor-->
+<script src="js/plugins/wangEditor.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dragon.mapper.TfeedbackMapper">
+    <resultMap id="BaseResultMap" type="com.dragon.pojo.Tfeedback">
+        <id column="fid" property="fid" jdbcType="INTEGER"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="sender" property="sender" jdbcType="CHAR"/>
+        <result column="fdate" property="fdate" jdbcType="TIMESTAMP"/>
+        <result column="fstatus" property="fstatus" jdbcType="SMALLINT"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    fid, title, tuser.username as sender, fdate, fstatus
+  </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dragon.pojo.TfeedbackExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        "" as content,
+        <include refid="Base_Column_List"/>
+        from tfeedback LEFT JOIN tuser ON tfeedback.sender = tuser.account
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        content,
+        <include refid="Base_Column_List"/>
+        from tfeedback LEFT JOIN tuser ON tfeedback.sender = tuser.account
+        where fid = #{fid,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tfeedback
+    where fid = #{fid,jdbcType=INTEGER}
+  </delete>
+    <delete id="deleteByExample" parameterType="com.dragon.pojo.TfeedbackExample">
+        delete from tfeedback
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.dragon.pojo.Tfeedback">
+    insert into tfeedback (fid, title, content, 
+      sender, fdate, fstatus
+      )
+    values (#{fid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{sender,jdbcType=CHAR}, #{fdate,jdbcType=TIMESTAMP}, #{fstatus,jdbcType=SMALLINT}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.dragon.pojo.Tfeedback">
+        insert into tfeedback
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="fid != null">
+                fid,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="sender != null">
+                sender,
+            </if>
+            <if test="fdate != null">
+                fdate,
+            </if>
+            <if test="fstatus != null">
+                fstatus,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="fid != null">
+                #{fid,jdbcType=INTEGER},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="sender != null">
+                #{sender,jdbcType=CHAR},
+            </if>
+            <if test="fdate != null">
+                #{fdate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="fstatus != null">
+                #{fstatus,jdbcType=SMALLINT},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.dragon.pojo.TfeedbackExample" resultType="java.lang.Integer">
+        select count(*) from tfeedback
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update tfeedback
+        <set>
+            <if test="record.fid != null">
+                fid = #{record.fid,jdbcType=INTEGER},
+            </if>
+            <if test="record.title != null">
+                title = #{record.title,jdbcType=VARCHAR},
+            </if>
+            <if test="record.content != null">
+                content = #{record.content,jdbcType=VARCHAR},
+            </if>
+            <if test="record.sender != null">
+                sender = #{record.sender,jdbcType=CHAR},
+            </if>
+            <if test="record.fdate != null">
+                fdate = #{record.fdate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.fstatus != null">
+                fstatus = #{record.fstatus,jdbcType=SMALLINT},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update tfeedback
+        set fid = #{record.fid,jdbcType=INTEGER},
+        title = #{record.title,jdbcType=VARCHAR},
+        content = #{record.content,jdbcType=VARCHAR},
+        sender = #{record.sender,jdbcType=CHAR},
+        fdate = #{record.fdate,jdbcType=TIMESTAMP},
+        fstatus = #{record.fstatus,jdbcType=SMALLINT}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.dragon.pojo.Tfeedback">
+        update tfeedback
+        <set>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="sender != null">
+                sender = #{sender,jdbcType=CHAR},
+            </if>
+            <if test="fdate != null">
+                fdate = #{fdate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="fstatus != null">
+                fstatus = #{fstatus,jdbcType=SMALLINT},
+            </if>
+        </set>
+        where fid = #{fid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.dragon.pojo.Tfeedback">
+    update tfeedback
+    set title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      sender = #{sender,jdbcType=CHAR},
+      fdate = #{fdate,jdbcType=TIMESTAMP},
+      fstatus = #{fstatus,jdbcType=SMALLINT}
+    where fid = #{fid,jdbcType=INTEGER}
+  </update>
+</mapper>
