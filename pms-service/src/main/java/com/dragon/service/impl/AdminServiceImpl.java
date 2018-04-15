@@ -7,7 +7,7 @@ import com.dragon.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("adminService")
 public class AdminServiceImpl implements AdminService {
 
     @Autowired
@@ -16,7 +16,7 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public Tadmin getAdminByAccount(String account) {
 
-        if (account == null || account == "") {
+        if (account == null || "".equals(account.trim())) {
             return null;
         }
         //全为数字是账号

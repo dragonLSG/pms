@@ -14,11 +14,6 @@
     <artifactId>pms-shiro</artifactId>
     <dependencies>
         <dependency>
-            <groupId>com.dragon</groupId>
-            <artifactId>pms-service</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>com.github.theborakompanioni</groupId>
             <artifactId>thymeleaf-extras-shiro</artifactId>
             <version>2.0.0</version>
@@ -51,6 +46,11 @@
                     <groupId>org.apache.shiro</groupId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.dragon</groupId>
+            <artifactId>pms-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
     </dependencies>

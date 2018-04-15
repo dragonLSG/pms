@@ -1,4 +1,4 @@
-package com.dragon.pmsspringboot;
+package com.dragon.run;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

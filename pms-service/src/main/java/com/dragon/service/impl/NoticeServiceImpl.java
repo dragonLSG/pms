@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-@Service
+@Service("noticeService")
 public class NoticeServiceImpl implements NoticeService {
 
     @Autowired
@@ -37,16 +37,17 @@ public class NoticeServiceImpl implements NoticeService {
         example.setOrderByClause("publishdate desc");
         Criteria criteria = example.createCriteria();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        if (title != null && title != "") {
+
+        if (title != null && !"".equals(title.trim())) {
             criteria.andTitleLike("%" + title + "%");
         }
-        if (publisher != null && publisher != "") {
+        if (publisher != null && !"".equals(publisher.trim())) {
             criteria.andPublisherEqualTo(publisher);
         }
-        if (startDate != null && startDate != "") {
+        if (startDate != null && !"".equals(startDate.trim())) {
             criteria.andPublishdateGreaterThan(dateFormat.parse(startDate));
         }
-        if (endDate != null && endDate != "") {
+        if (endDate != null && !"".equals(endDate.trim())) {
             criteria.andPublishdateLessThan(dateFormat.parse(endDate));
         }
 
@@ -83,7 +84,7 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public Integer delNotices(String noticeIds) throws Exception {
 
-        if (null == noticeIds) {
+        if (null == noticeIds || "".equals(noticeIds.trim())) {
             return 0;
         }
         String[] noticeId = noticeIds.split(",");

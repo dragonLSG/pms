@@ -32,7 +32,6 @@ public class PageController {
 
     @PostMapping("/doLogin")
     public String login(Tuserpermission userInfo, boolean rememberMe, HttpServletRequest request) {
-        System.out.println("rememberMe = " + rememberMe);
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(userInfo.getUsername(), userInfo.getPasswd(), rememberMe);
         String msg = "";

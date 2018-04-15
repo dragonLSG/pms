@@ -6,7 +6,7 @@ import com.dragon.service.UserPermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("userPermissionService")
 public class UserPermissionServiceImpl implements UserPermissionService {
 
     @Autowired
@@ -15,7 +15,7 @@ public class UserPermissionServiceImpl implements UserPermissionService {
     @Override
     public Tuserpermission getUserByAccount(String account) {
 
-        if (account == null || account == "") {
+        if (account == null || "".equals(account.trim())) {
             return null;
         }
         //全为数字是账号

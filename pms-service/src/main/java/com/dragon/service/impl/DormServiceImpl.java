@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("dormService")
 public class DormServiceImpl implements DormService {
 
     @Autowired
@@ -27,7 +27,7 @@ public class DormServiceImpl implements DormService {
 
         TdormitoryExample example = new TdormitoryExample();
         Criteria criteria = example.createCriteria();
-        if (dormName != null && dormName != "") {
+        if (dormName != null && !"".equals(dormName.trim())) {
             criteria.andDormitorynameLike("%" + dormName + "%");
         }
 
@@ -40,10 +40,9 @@ public class DormServiceImpl implements DormService {
     @Override
     public Integer delDorm(String dormIds) throws Exception {
 
-        if (null == dormIds) {
+        if (null == dormIds || "".equals(dormIds.trim())) {
             return 0;
         }
-        System.out.println("dormIds = " + dormIds);
         String[] ids = dormIds.split(",");
         int num = 0;
         for (String id : ids) {

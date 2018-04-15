@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-@Service
+@Service("feedBackService")
 public class FeedBackServiceImpl implements FeedBackService {
 
     @Autowired
@@ -35,20 +35,21 @@ public class FeedBackServiceImpl implements FeedBackService {
         example.setOrderByClause("fdate desc");
         Criteria criteria = example.createCriteria();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        if (title != null && title != "") {
+
+        if (title != null && !"".equals(title.trim())) {
             criteria.andTitleLike("%" + title + "%");
         }
-        if (startDate != null && startDate != "") {
+        if (startDate != null && !"".equals(startDate.trim())) {
             criteria.andFdateGreaterThan(dateFormat.parse(startDate));
         }
-        if (endDate != null && endDate != "") {
+        if (endDate != null && !"".equals(endDate.trim())) {
             criteria.andFdateLessThan(dateFormat.parse(endDate));
         }
         if (status != null && status != 2) {
             criteria.andFstatusEqualTo(status);
         }
         List<Tfeedback> list = mapper.selectByExample(example);
-        PageInfo pageInfo = new PageInfo(list);
+        PageInfo<Tfeedback> pageInfo = new PageInfo<Tfeedback>(list);
 
         return new DataList(list, new PageInf(pageInfo));
     }
