@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 声明需要暴露的服务接口 -->
+    <dubbo:service interface="com.dragon.service.AdminService" ref="adminService"/>
+    <dubbo:service interface="com.dragon.service.DormService" ref="dormService"/>
+    <dubbo:service interface="com.dragon.service.FeedBackService" ref="feedBackService"/>
+    <dubbo:service interface="com.dragon.service.NoticeService" ref="noticeService"/>
+    <dubbo:service interface="com.dragon.service.UserPermissionService" ref="userPermissionService"/>
+    <dubbo:service interface="com.dragon.service.UserService" ref="userService"/>
+
+</beans>
+

@@ -1,0 +1,190 @@
+/*模块公共部分*/
+.module_wrapper {
+    /*width: 90%;*/
+    height: 100%;
+    margin: 15px;
+    font-size: 1em;
+}
+
+#module_1, #module_3, #module_4, #module_5, #module_6 {
+    margin: 20px auto;
+}
+
+.panel-body {
+    overflow: scroll;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.pagination {
+    display: -webkit-inline-box;
+}
+
+.module_table td {
+    border: 1px solid #f4f4f4 !important;
+}
+
+/**------------------------module1-------------------------------**/
+#module_1 table {
+    table-layout: fixed;
+}
+
+#noticeTitle {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.notice_arrow:before {
+    content: "\F142";
+    font-family: 'Material Design Icons';
+    text-rendering: auto;
+    line-height: 22px;
+}
+
+/**------------------------module3-------------------------------**/
+#module_3 i {
+    padding-right: 20px;
+}
+
+#module_3 .panel {
+    width: 70%;
+    margin: auto;
+}
+
+#module_3 table {
+    font-size: 23px;
+    width: 70%;
+    margin: 50px auto;
+    display: table;
+}
+
+#module_3 input {
+    border: 0px solid white;
+}
+
+#module_3 td, #module_1 td {
+    border: 0px !important;
+}
+
+/*表格*/
+.module_table {
+    width: 98%;
+    margin: auto;
+    text-align: center;
+    background-color: white;
+    font-family: "Microsoft YaHei UI";
+}
+
+.module_table tr th {
+    text-align: center;
+}
+
+/*分页*/
+.pagination_bar {
+    width: 98%;
+    margin: auto;
+    text-align: center;
+}
+
+.SelectEvenNum {
+    float: left;
+    margin-top: 10px;
+}
+
+.SelectEvenNum div, .SelectEvenNum select {
+    float: left;
+}
+
+.SelectEvenNum select {
+    padding: 0px;
+}
+
+/*.pagination_bar .pagination {*/
+/*position: relative;*/
+/*margin: 5px auto;*/
+/*display: block;*/
+/*padding-left: 30% !important;*/
+/*}*/
+
+.sumNum {
+    position: relative;
+    float: right;
+    margin-top: 10px;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+.btn {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+.panel-body {
+    padding: 15px !important;
+}
+
+.module_table_panel .panel-body {
+    padding: 10px !important;
+}
+
+@media screen and (max-width: 1367px) {
+    .pagination > li > a, .pagination > li > span {
+        padding: 3px 6px;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    .module_wrapper {
+        width: 100%;
+        height: 100%;
+        font-size: 1em;
+        margin: 0;
+    }
+
+    .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-12, .panel-body {
+        padding: 0;
+    }
+
+    .pagination > li > a, .pagination > li > span {
+        padding: 3px 6px;
+    }
+
+    .SelectEvenNum, .sumNum {
+        margin: auto;
+    }
+
+    .pagination_bar {
+        display: grid;
+    }
+
+    .pagination {
+        margin: 5px auto;
+    }
+
+    #module_3 .panel {
+        width: 100%;
+        font-size: 1em;
+    }
+
+    #module_3 .panel input {
+        width: 100%;
+    }
+
+    #module_3 table {
+        font-size: 20px;
+        width: 98%;
+        margin: auto;
+    }
+
+    #module_3 tr td {
+        border: 1px solid #f4f4f4 !important;
+    }
+
+    #module_3 tr td:first-child {
+        width: 45%;
+    }
+
+}
