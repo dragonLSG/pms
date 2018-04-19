@@ -34,7 +34,8 @@ public class ShiroConfig {
 
     @Value("${spring.redis.timeout}")
     private Integer timeout;
-
+    @Value("${spring.redis.session.prefix}")
+    private String userTag;
     /**
      * url拦截
      *
@@ -65,11 +66,11 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/logout", "logout");
 
         // 其他 url请求需要认证
-        filterChainDefinitionMap.put("/**", "user");
+        filterChainDefinitionMap.put("/**", "authc");
 
         // 默认的登陆页面，，不通过的请求都会转到 login.html
         shiroFilterFactoryBean.setLoginUrl("/login.html");
-        shiroFilterFactoryBean.setSuccessUrl("/admin.html");
+        shiroFilterFactoryBean.setSuccessUrl("/");
 
         //未授权界面;
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");
@@ -132,6 +133,7 @@ public class ShiroConfig {
     public DefaultWebSessionManager sessionManager() {
 
         RedisSessionDAO redisSessionDAO = new RedisSessionDAO();
+        redisSessionDAO.setKeyPrefix(userTag + "_session:");
         redisSessionDAO.setRedisManager(redisManager());
 
         DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();

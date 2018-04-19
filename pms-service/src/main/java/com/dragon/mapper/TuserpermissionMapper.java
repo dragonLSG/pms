@@ -8,4 +8,5 @@ public interface TuserpermissionMapper {
 
     Tuserpermission selectByPrimaryKey(String account);
 
+    Tuserpermission selectByPrimaryKey2(String account);
 }

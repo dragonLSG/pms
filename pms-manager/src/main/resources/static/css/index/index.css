@@ -28,6 +28,13 @@
     font-family: "Microsoft YaHei UI";
 }
 
+.panel-body {
+    overflow: scroll;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+
 .module_table tr th {
     text-align: center;
 }
@@ -39,6 +46,9 @@
     text-align: center;
 }
 
+.pagination {
+    display: -webkit-inline-box;
+}
 .SelectEvenNum {
     float: left;
     margin-top: 10px;
@@ -55,8 +65,7 @@
 .pagination_bar .pagination {
     position: relative;
     margin: 5px auto;
-    display: block;
-    padding-left: 30% !important;
+    /*display: block;*/
 }
 
 .sumNum {
@@ -82,7 +91,7 @@
     padding: 10px !important;
 }
 
-@media (max-width: 419px) {
+@media screen and (max-width: 1367px) {
     .pagination > li > a, .pagination > li > span {
         padding: 3px 6px;
     }
@@ -92,4 +101,34 @@
 
     }
 
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+
+    .module_wrapper {
+        width: 100%;
+        height: 100%;
+        font-size: 1em;
+    }
+
+    .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-12, .panel-body {
+        padding: 0;
+    }
+
+    /*分页工具*/
+    .pagination > li > a, .pagination > li > span {
+        padding: 3px 6px;
+    }
+
+    .SelectEvenNum, .sumNum {
+        margin: auto;
+    }
+
+    .pagination_bar {
+        display: grid;
+    }
+
+    .pagination {
+        margin: 5px auto;
+    }
 }

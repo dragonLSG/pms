@@ -26,4 +26,17 @@ public class UserPermissionServiceImpl implements UserPermissionService {
         return null;
     }
 
+    @Override
+    public Tuserpermission getAdminByAccount(String account) {
+        if (account == null || "".equals(account.trim())) {
+            return null;
+        }
+        //全为数字是账号
+        if (account.matches("[0-9]+")) {
+            Tuserpermission userpermission = mapper.selectByPrimaryKey2(account);
+            return userpermission;
+        }
+        return null;
+    }
+
 }

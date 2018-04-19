@@ -30,6 +30,7 @@ public class FeedBackServiceImpl implements FeedBackService {
         String startDate = feedBack.getStartDate();
         String endDate = feedBack.getEndDate();
         Short status = feedBack.getStatus();
+        String sender = feedBack.getSender();
 
         TfeedbackExample example = new TfeedbackExample();
         example.setOrderByClause("fdate desc");
@@ -44,6 +45,9 @@ public class FeedBackServiceImpl implements FeedBackService {
         }
         if (endDate != null && !"".equals(endDate.trim())) {
             criteria.andFdateLessThan(dateFormat.parse(endDate));
+        }
+        if (sender != null && !"".equals(sender.trim())) {
+            criteria.andSenderEqualTo(sender);
         }
         if (status != null && status != 2) {
             criteria.andFstatusEqualTo(status);

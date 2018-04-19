@@ -15,6 +15,7 @@
         <module>../pms-portal</module>
         <module>../pms-shiro</module>
         <module>../pms-api</module>
+        <module>../pms-jobs</module>
     </modules>
 
     <parent>

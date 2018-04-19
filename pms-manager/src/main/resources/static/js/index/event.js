@@ -8,6 +8,24 @@ var noticeEditor = null;
  */
 $(function () {
 
+    //判断是手机还是PC访问
+    function IsPC() {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = ["Android", "iPhone",
+            "SymbianOS", "Windows Phone",
+            "iPad", "iPod", "IOS"];
+        isPC = true;
+        for (var v = 0; v < Agents.length; v++) {
+            if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                isPC = false;
+                break;
+            }
+        }
+        return isPC;
+    }
+
+    IsPC();
+
     /*注销账户*/
     $("#logoutBtn").click(function () {
         if (confirm("确认注销账户？")) {
@@ -27,8 +45,6 @@ $(function () {
 
     /*更改每页行数，刷新列表*/
     $(".SelectEvenNum select").change(function () {
-        //初始化分页插件
-        resetPagination(id, 2, defaultIndex)
         //加载数据
         switchToShow(id, "reload")
     });
@@ -44,16 +60,10 @@ $(function () {
 
         // 清空content内容
         removeALlContent();
-        //设置 获取到的分页信息为null
-        ajaxPageInf = null;
 
         // 设置 当前所在module
         var menu_id = $(this).attr("id");
         id = menu_id.split("_")[1];
-        //初始化 分页插件
-        if (id != 1) {
-            resetPagination(id, 2, defaultIndex)
-        }
 
         //加载数据
         switch (parseInt(id)) {
@@ -78,6 +88,11 @@ $(function () {
         $("#module_" + id).css({
             "display": "block"
         });
+
+        //若为手机操作，自动关闭菜单栏
+        if (!isPC) {
+            $("body").addClass("enlarged");
+        }
 
     });
 
@@ -155,9 +170,7 @@ $(function () {
 
     /* 查询用户 */
     $("#module_2 .serchBar .btn").click(function () {
-
         showtable_2(getSearchUserInf("section"), "reload");
-
     })
 
     /* 批量删除用户btn */
@@ -190,16 +203,6 @@ $(function () {
         resetPagination(id, 2, defaultIndex);
         showtable_3(getPageInf(id), dormName, "reset");
     });
-
-    // /*遮盖层*/
-    // $("#module_3").mLoading({
-    //     text: "", //加载文字，默认值：加载中...
-    //     icon: "", //加载图标，默认值：一个小型的base64的gif图片
-    //     html: false, //设置加载内容是否是html格式，默认值是false
-    //     content: "", //忽略icon和text的值，直接在加载框中显示此值
-    //     mask: true //是否显示遮罩效果，默认显示
-    // });
-
 
     /*************************通告管理*****************************************/
 
@@ -435,6 +438,8 @@ function showtable_2(args, option) {
             if (result.status == "200" && result.data != null) {
                 var data = result.data;
                 if (option == "reload") {
+                    ajaxPageInf = null;
+                    resetPagination(id, 2, defaultIndex)
                     $.each(data.data, function (key, value) {
                         var stat_str = value.status == 1 ? "在校" : "离校";
                         var trs = "<tr><td><input type='checkbox'></td><td>" + value.account +
@@ -444,7 +449,8 @@ function showtable_2(args, option) {
                             ")'>删除</a><a href='javascript:void(0);'>编辑</a></td></tr>"
                         $("#table_2 tbody").append(trs);
                     })
-
+                    ajaxPageInf = data.pageInf;
+                    resetPagination(id, 2, defaultIndex)
                 } else if (option == "reset") {
                     var trs = $("#table_2 tbody tr");
                     trs.css("display", "table-row")
@@ -509,6 +515,8 @@ function showtable_3(pageInf, dormName, option) {
                 var trs = null;
                 var data = result.data;
                 if (option == "reload") {
+                    ajaxPageInf = null;
+                    resetPagination(id, 2, defaultIndex)
                     $.each(data.data, function (key, value) {
                         trs += "<tr><td><input type='checkbox'></td><td>" + value.dormitoryid +
                             "</td><td>" + value.dormitoryname + "</td><td>" + value.balance +
@@ -517,6 +525,8 @@ function showtable_3(pageInf, dormName, option) {
 
                     })
                     $("#table_3 tbody").append(trs);
+                    ajaxPageInf = data.pageInf;
+                    resetPagination(id, 2, defaultIndex)
                 } else if (option == "reset") {
                     var trs = $("#table_3 tbody tr");
                     trs.css("display", "table-row")
@@ -574,6 +584,8 @@ function showtable_4(args, option) {
             if (result.status == "200" && result.data != null) {
                 var data = result.data;
                 if (option == "reload") {
+                    ajaxPageInf = null;
+                    resetPagination(id, 2, defaultIndex)
                     $.each(data.data, function (key, value) {
                         var trs = "<tr><td><input type='checkbox'></td><td>" + value.noticeid +
                             "</td><td>" + value.title + "</td><td><a href='javascript:showNoticContent(" + value.noticeid +
@@ -582,7 +594,8 @@ function showtable_4(args, option) {
                             ")'>删除</a><a href='javascript:editNotice(" + value.noticeid + ")'>编辑</a></td></tr>"
                         $("#table_4 tbody").append(trs);
                     })
-
+                    ajaxPageInf = data.pageInf;
+                    resetPagination(id, 2, defaultIndex)
                 } else if (option == "reset") {
                     var trs = $("#table_4 tbody tr");
                     trs.css("display", "table-row")
@@ -772,6 +785,7 @@ function showtable_5(args, option) {
             if (result.status == "200" && result.data != null) {
                 var data = result.data;
                 if (option == "reload") {
+                    resetPagination(id, 2, defaultIndex)
                     $.each(data.data, function (key, value) {
                         var status = value.fstatus == 0 ? "未处理" : "已处理"
                         var trs = "<tr><td><input type='checkbox'></td><td>" + value.fid +
@@ -781,7 +795,8 @@ function showtable_5(args, option) {
                             ")'>删除</a><a href='javascript:editNotice(" + value.fid + ")'>处理</a></td></tr>"
                         $("#table_5 tbody").append(trs);
                     })
-
+                    ajaxPageInf = data.pageInf;
+                    resetPagination(id, 2, defaultIndex)
                 } else if (option == "reset") {
                     var trs = $("#table_5 tbody tr");
                     trs.css("display", "table-row")

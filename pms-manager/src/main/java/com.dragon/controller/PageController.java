@@ -31,9 +31,9 @@ public class PageController {
     }
 
     @PostMapping("/doLogin")
-    public String login(Tuserpermission userInfo, boolean rememberMe, HttpServletRequest request) {
+    public String login(Tuserpermission userInfo, HttpServletRequest request) {
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(userInfo.getUsername(), userInfo.getPasswd(), rememberMe);
+        UsernamePasswordToken token = new UsernamePasswordToken(userInfo.getUsername(), userInfo.getPasswd());
         String msg = "";
         try {
             subject.login(token);

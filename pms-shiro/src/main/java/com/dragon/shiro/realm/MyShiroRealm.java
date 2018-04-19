@@ -13,6 +13,7 @@ import org.apache.shiro.util.ByteSource;
 import org.crazycake.shiro.RedisManager;
 import org.crazycake.shiro.SerializeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -24,6 +25,9 @@ public class MyShiroRealm extends AuthorizingRealm {
     private UserPermissionService service;
     @Autowired
     private RedisManager redisManager;
+
+    @Value("${spring.redis.user}")
+    private String userTag;
 
     /*授权*/
     @Override
@@ -47,23 +51,27 @@ public class MyShiroRealm extends AuthorizingRealm {
         System.out.println("MyShiroRealm.doGetAuthenticationInfo()");
         //获取用户的输入的账号.
         String account = (String) token.getPrincipal();
-
+        System.out.println("userTag = " + userTag);
         Tuserpermission user = null;
         if (account != null && account != "") {
             //查询redis中是否存储 user
-            byte[] bytes = redisManager.get(account.getBytes());
+            byte[] bytes = redisManager.get((userTag + account).getBytes());
 
             if (bytes != null && bytes.length > 0) {
                 user = (Tuserpermission) SerializeUtils.deserialize(bytes);
             } else {
                 //若没有存储,从数据库中取
-                user = service.getUserByAccount(account);
+                if ("pms-portal-redis:".equals(userTag)) {
+                    user = service.getUserByAccount(account);
+                } else {
+                    user = service.getAdminByAccount(account);
+                }
                 //若数据库中没有该账户
                 if (user == null) {
                     throw new UnknownAccountException();
                 }
                 //若有该账户,将user存入redis
-                redisManager.set(account.getBytes(), SerializeUtils.serialize(user), 3600);
+                redisManager.set((userTag + account).getBytes(), SerializeUtils.serialize(user), 3600);
             }
         }
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(

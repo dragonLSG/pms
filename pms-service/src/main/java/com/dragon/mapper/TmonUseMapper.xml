@@ -91,7 +91,7 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.dragon.pojo.TmonUse">
-    insert into tmon_use (dormitoryid, delect_use, date, 
+        insert into tmon_use (dormitoryid, melect_use, date,
       mfee)
     values (#{dormitoryid,jdbcType=INTEGER}, #{delectUse,jdbcType=DECIMAL}, #{date,jdbcType=TIMESTAMP}, 
       #{mfee,jdbcType=DECIMAL})
@@ -156,7 +156,7 @@
     <update id="updateByExample" parameterType="map">
         update tmon_use
         set dormitoryid = #{record.dormitoryid,jdbcType=INTEGER},
-        delect_use = #{record.delectUse,jdbcType=DECIMAL},
+        melect_use = #{record.delectUse,jdbcType=DECIMAL},
         date = #{record.date,jdbcType=TIMESTAMP},
         mfee = #{record.mfee,jdbcType=DECIMAL}
         <if test="_parameter != null">

@@ -13,9 +13,17 @@
     SELECT tuser.account, username, passwd, permission
     FROM  ((tuser LEFT JOIN user_role ON user_role.account = tuser.account) LEFT JOIN role_permission ON role_permission.roleId = user_role.roleId) LEFT JOIN permission ON permissionId = permission.Id
     WHERE tuser.account = #{account,jdbcType=VARCHAR}
-    UNION ALL
-    SELECT tadmin.account, adminname AS username, passwd, permission
-    FROM  ((tadmin LEFT JOIN user_role ON user_role.account = tadmin.account) LEFT JOIN role_permission ON role_permission.roleId = user_role.roleId) LEFT JOIN permission ON permissionId = permission.Id
-    WHERE tadmin.account = #{account,jdbcType=VARCHAR}
-  </select>
+    </select>
+
+    <select id="selectByPrimaryKey2" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+            tadmin.account,
+            adminname AS username,
+            passwd,
+            permission
+        FROM ((tadmin
+            LEFT JOIN user_role ON user_role.account = tadmin.account) LEFT JOIN role_permission
+                ON role_permission.roleId = user_role.roleId) LEFT JOIN permission ON permissionId = permission.Id
+        WHERE tadmin.account = #{account,jdbcType=VARCHAR}
+    </select>
 </mapper>

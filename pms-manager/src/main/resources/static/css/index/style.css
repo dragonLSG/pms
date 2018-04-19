@@ -39,8 +39,8 @@ File: Main Css File
 32. Widgets
 33. Responsive
 */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Karla:700|Nunito+Sans:600,700");
-@import url("https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,700|Roboto:400,500,700");
+/*@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Karla:700|Nunito+Sans:600,700");*/
+/*@import url("https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,700|Roboto:400,500,700");*/
 
 /* =============
   Menu
@@ -1435,7 +1435,7 @@ a:focus {
 
 .btn-custom, .btn-primary, .btn-success, .btn-info, .btn-warning,
 .btn-danger, .btn-inverse, .btn-purple, .btn-pink {
-    color: #ffffff !important;
+    /*color: #ffffff !important;*/
 }
 
 .btn-custom {
