@@ -18,7 +18,22 @@
             <artifactId>pms-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <!--redis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
+        </dependency>
 
+        <!--email-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
         <!--spring-boot-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -86,6 +101,11 @@
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
             <version>1.2</version>
+        </dependency>
+        <dependency>
+            <artifactId>shiro-core</artifactId>
+            <groupId>org.apache.shiro</groupId>
+            <version>1.4.0</version>
         </dependency>
     </dependencies>
 

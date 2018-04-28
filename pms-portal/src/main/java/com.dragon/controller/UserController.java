@@ -76,5 +76,23 @@ public class UserController {
         return PMSResult.Ok(user, "success");
     }
 
+    @GetMapping("/checkAccount")
+    public PMSResult checkUserExist(@RequestParam("account") String account) {
+        Tuser user = userService.getUserByAccount(account);
+        boolean exist = user == null ? false : true;
+        return PMSResult.Ok(exist, "success");
+    }
+
+    @PostMapping()
+    public PMSResult addUser(Tuser user) {
+        Integer num = null;
+        try {
+            num = userService.addUser(user);
+        } catch (Exception e) {
+            return PMSResult.Fail("操作失败，请稍后重试！");
+        }
+        return PMSResult.Ok(num, "success");
+    }
+
 
 }

@@ -8,7 +8,7 @@ public class PMSResult implements Serializable {
 
     private String status;
     private Object data;
-    private String massage;
+    private String message;
 
     private static volatile PMSResult singleton;
 
@@ -25,7 +25,7 @@ public class PMSResult implements Serializable {
         }
         synchronized (PMSResult.class) {
             singleton.setData(data);
-            singleton.setMassage(msg);
+            singleton.setMessage(msg);
             singleton.setStatus(status);
             return singleton;
         }
@@ -74,12 +74,12 @@ public class PMSResult implements Serializable {
         this.data = data;
     }
 
-    public String getMassage() {
-        return massage;
+    public String getMessage() {
+        return message;
     }
 
-    public void setMassage(String massage) {
-        this.massage = massage;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
 }

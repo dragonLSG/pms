@@ -30,10 +30,57 @@ $(function () {
             }
         }
     });
+
+    $("#l-forget-password input").focus(function () {
+        $("#forgetError").text("");
+        $("#forgetSuccess").text("");
+    })
 })
 
-/* 提交表单 */
+/*发送验证码*/
+function sendCheckNum() {
+    var inputs = $("#l-forget-password input");
+    var account = inputs.eq(0).val();
+    var phone = inputs.eq(1).val();
+    var email = inputs.eq(2).val();
+    var checkNum = inputs.eq(3).val();
+
+    var args = {account: account, phone: phone, email: email};
+    $.ajax({
+        type: 'GET',
+        url: '/sendCheckNum',
+        data: args,
+        dataType: 'json',
+        success: function (result, status) {
+            if (result.status == "200") {
+                $("#forgetSuccess").text(result.message);
+            }
+            if (result.status == "500") {
+                $("#forgetError").text(result.message);
+            }
+        }
+    })
+
+}
+
+/*手机号 / 邮箱 验证切换*/
+function changeWay(select) {
+    var text = $(select).find("option:selected").text();
+    if (text == "邮箱") {
+        $("#mobile input").val("");
+        $("#mobile").css("display", "none");
+        $("#email").css("display", "table");
+    } else {
+        $("#email input").val("");
+        $("#email").css("display", "none");
+        $("#mobile").css("display", "table");
+    }
+}
+
+
+/* 提交登陆表单 */
 function submitLogin() {
     document.getElementById('loginform').submit();
 }
+
  

@@ -13,6 +13,9 @@ materialAdmin
                 if ($('.fg-line')[0]) {
                     $('body').on('focus', '.form-control', function () {
                         $(this).closest('.fg-line').removeClass('has-error').addClass('fg-toggled');
+                        $("#registMsg").text("");
+                        $("#forgetSuccess").text("");
+                        $("#forgetError").text("");
                     })
 
                     $('body').on('blur', '.form-control', function () {

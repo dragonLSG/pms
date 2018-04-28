@@ -16,11 +16,13 @@ import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreato
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Configuration
+@PropertySource(value = {"classpath:application-shiro.properties"})
 public class ShiroConfig {
 
     @Value("${spring.redis.host}")
@@ -29,11 +31,9 @@ public class ShiroConfig {
     @Value("${spring.redis.port}")
     private Integer port;
 
-    @Value("${spring.redis.password}")
-    private String password;
-
     @Value("${spring.redis.timeout}")
     private Integer timeout;
+
     @Value("${spring.redis.session.prefix}")
     private String userTag;
     /**
@@ -61,6 +61,11 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/login.html", "anon");
         // 登陆验证
         filterChainDefinitionMap.put("/doLogin", "anon");
+
+        // 注册验证账号是否存在
+        filterChainDefinitionMap.put("/user/checkAccount*", "anon");
+        //发送验证码
+        filterChainDefinitionMap.put("/sendCheckNum", "anon");
 
         //配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
         filterChainDefinitionMap.put("/logout", "logout");
@@ -123,7 +128,6 @@ public class ShiroConfig {
         redisManager.setPort(port);
         redisManager.setExpire(1800);// 配置缓存过期时间
         redisManager.setTimeout(timeout);
-//        redisManager.setPassword(password);
         return redisManager;
     }
 

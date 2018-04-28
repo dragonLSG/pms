@@ -8,6 +8,7 @@ import com.dragon.pojo.Tuser;
 import com.dragon.pojo.TuserExample;
 import com.dragon.pojo.TuserExample.Criteria;
 import com.dragon.service.UserService;
+import com.dragon.util.PasswordHelper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,7 @@ public class UserServiceImpl implements UserService {
         if (status != null && status != 2) {
             criteria.andStatusEqualTo(status);
         }
+
         List<Tuser> list = userMapper.selectByExample(example);
         PageInfo<Tuser> pageinfo = new PageInfo<Tuser>(list);
 
@@ -67,17 +69,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Tuser getUserByAccount(String account) {
-        if (account == null || account == "") {
-            return null;
+        Tuser user = null;
+
+        if (account != null && account != "") {
+            user = userMapper.selectByPrimaryKey(account);
         }
-        //全为数字是账号
-        if (account.matches("[0-9]+")) {
-            return userMapper.selectByPrimaryKey(account);
-        } else {
-            TuserExample example = new TuserExample();
-            Criteria criteria = example.createCriteria();
-            criteria.andUsernameEqualTo(account);
-            return (Tuser) userMapper.selectByExample(example);
+
+        return user;
+    }
+
+    @Override
+    public Integer addUser(Tuser user) throws Exception {
+        int num = 0;
+        if (user != null) {
+            String newPasswd = PasswordHelper.encryptPassword(user.getPasswd(), user.getAccount());
+            user.setPasswd(newPasswd);
+            num = userMapper.insertSelective(user);
         }
+        return num;
     }
 }

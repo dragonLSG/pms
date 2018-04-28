@@ -1,18 +1,28 @@
 package com.dragon.controller;
 
 
+import com.dragon.common.PMSResult;
+import com.dragon.pojo.Tuser;
 import com.dragon.pojo.Tuserpermission;
+import com.dragon.service.SendMsgService;
+import com.dragon.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class PageController {
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private SendMsgService emailService;
 
     @GetMapping("/")
     public String index() {
@@ -23,7 +33,6 @@ public class PageController {
     public String toIndex() {
         return "index";
     }
-
 
     @GetMapping("/login.html")
     public String toLogin() {
@@ -56,4 +65,24 @@ public class PageController {
         }
     }
 
+    @PostMapping("/regUser")
+    public String doRegist(Tuser user) {
+        int num = 0;
+        try {
+            num = userService.addUser(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "regSuccess";
+    }
+
+    @GetMapping("/sendCheckNum")
+    @ResponseBody
+    public PMSResult sendCheckNum(String account, String phone, String email) {
+
+        PMSResult result = emailService.sendCheckNum(account, phone, email);
+
+        return result;
+    }
 }
