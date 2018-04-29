@@ -15,4 +15,6 @@ public interface UserService {
     Tuser getUserByAccount(String account);
 
     Integer addUser(Tuser user) throws Exception;
+
+    Integer updateUser(Tuser user);
 }

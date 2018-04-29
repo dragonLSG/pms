@@ -12,5 +12,5 @@
     <dubbo:reference id="noticeService" check="false" interface="com.dragon.service.NoticeService"/>
     <dubbo:reference id="userPermissionService" check="false" interface="com.dragon.service.UserPermissionService"/>
     <dubbo:reference id="userService" check="false" interface="com.dragon.service.UserService"/>
-
+    <dubbo:reference id="electService" check="false" interface="com.dragon.service.ElectService"/>
 </beans>

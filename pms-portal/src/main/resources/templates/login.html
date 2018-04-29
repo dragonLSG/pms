@@ -178,56 +178,70 @@
     <p class="text-left">若您忘记登陆密码，可以通过手机号或邮箱验证，重新设置您的密码。</p>
     <span id="forgetError" style="color: red"></span>
     <span id="forgetSuccess" style="color: green"></span>
-    <div class="input-group m-b-20" style="margin-bottom: 10px">
-        选择通过
-        <select onchange="changeWay(this)">
-            <option>手机号</option>
-            <option>邮箱</option>
-        </select>
-        进行验证
-    </div>
-    <!--account-->
-    <div class="input-group m-b-20">
+    <form id="resetForm" action="/resetPasswd" method="post">
+        <div class="input-group m-b-20" style="margin-bottom: 10px">
+            选择通过
+            <select onchange="changeWay(this)">
+                <option>手机号</option>
+                <option>邮箱</option>
+            </select>
+            进行验证
+        </div>
+        <!--account-->
+        <div class="input-group m-b-20">
     		<span class="input-group-addon">
     			<i class="zmdi zmdi-account"></i>
     		</span>
-        <div class="fg-line">
-            <input name="account" type="text" class="form-control" placeholder="账号" regex="^\w{3,16}$"/>
+            <div class="fg-line">
+                <input name="account" type="text" class="form-control" placeholder="账号" regex="^\w{3,16}$"/>
+            </div>
         </div>
-    </div>
-    <div class="input-group m-b-20" id="mobile">
-        <span class="input-group-addon"><i class="zmdi zmdi-phone"></i></span>
-        <div class="fg-line">
-            <input type="text" class="form-control" placeholder="手机号" regex="^\d{11}$"/>
+        <div class="input-group m-b-20">
+            <span class="input-group-addon"><i class="zmdi zmdi-paste"></i></span>
+            <div class="fg-line">
+                <input name="passwd" type="text" class="form-control" placeholder="新密码" regex="^\d{11}$"/>
+            </div>
         </div>
-    </div>
-    <div class="input-group m-b-20" style="display: none" id="email">
-        <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
-        <div class="fg-line">
-            <input type="text" class="form-control" placeholder="邮箱"
-                   regex="^\w+@\w+\.[a-zA-Z]+(\.[a-zA-Z]+)?$"/>
+        <div class="input-group m-b-20">
+            <span class="input-group-addon"><i class="zmdi zmdi-paste"></i></span>
+            <div class="fg-line">
+                <input type="text" class="form-control" placeholder="重输密码" regex="^\d{11}$"/>
+            </div>
         </div>
-    </div>
-    <div class="input-group m-b-20">
+        <div class="input-group m-b-20" id="mobile">
+            <span class="input-group-addon"><i class="zmdi zmdi-phone"></i></span>
+            <div class="fg-line">
+                <input name="mobile" type="text" class="form-control" placeholder="手机号" regex="^\d{11}$"/>
+            </div>
+        </div>
+        <div class="input-group m-b-20" style="display: none" id="email">
+            <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+            <div class="fg-line">
+                <input name="email" type="text" class="form-control" placeholder="邮箱"
+                       regex="^\w+@\w+\.[a-zA-Z]+(\.[a-zA-Z]+)?$"/>
+            </div>
+        </div>
+        <div class="input-group m-b-20">
         <span class="input-group-addon">
     			<i class="zmdi zmdi-check"></i>
     		</span>
-        <div style="padding-left: 10px;" class="">
-            <input id="forgetNum" style="width: 55%; padding: 6px 12px;" type="text" class="fg-line form-control"
-                   placeholder="校验码"/>
-            <button onclick="sendCheckNum()" class="btn btn-default"><span>发送校验码</span></button>
+            <div style="padding-left: 10px;">
+                <input name="checkNum" id="forgetNum" style="width: 55%; padding: 6px 12px;" type="text"
+                       class="fg-line form-control"
+                       placeholder="校验码"/>
+                <button type="button" onclick="sendCheckNum(this)" class="btn btn-default"><span>发送校验码</span></button>
+            </div>
         </div>
-    </div>
-
-
-    <ul class="">
-        <li style="display: inline" data-block="#l-login" data-ng-click="lctrl.forgot = 0; lctrl.login = 1"><a
-                href="javascript:void(0);">登陆</a></li>
-        <li style="display: inline">&nbsp;&nbsp;</li>
-        <li style="display: inline" data-block="#l-register" data-ng-click="lctrl.forgot = 0; lctrl.register = 1"><a
-                href="javascript:void(0);">注册</a></li>
-    </ul>
-    <a href="index.html" class="btn btn-login btn-danger btn-float"><i class="zmdi zmdi-arrow-forward"></i></a>
+        <ul>
+            <li style="display: inline" data-block="#l-login" data-ng-click="lctrl.forgot = 0; lctrl.login = 1"><a
+                    href="javascript:void(0);">登陆</a></li>
+            <li style="display: inline">&nbsp;&nbsp;</li>
+            <li style="display: inline" data-block="#l-register" data-ng-click="lctrl.forgot = 0; lctrl.register = 1"><a
+                    href="javascript:void(0);">注册</a></li>
+        </ul>
+        <a onclick="submitReset();return false;" href="javascript:void(0);"
+           class="btn btn-login btn-danger btn-float"><i class="zmdi zmdi-arrow-forward"></i></a>
+    </form>
 </div>
 
 <!-- 模态框（Modal） -->

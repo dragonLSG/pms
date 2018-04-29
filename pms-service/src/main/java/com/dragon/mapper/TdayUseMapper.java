@@ -9,6 +9,7 @@ import java.util.List;
 
 @Component
 public interface TdayUseMapper {
+
     int countByExample(TdayUseExample example);
 
     int deleteByExample(TdayUseExample example);
@@ -18,6 +19,8 @@ public interface TdayUseMapper {
     int insertSelective(TdayUse record);
 
     List<TdayUse> selectByExample(TdayUseExample example);
+
+    List<TdayUse> selectSumUseByExample(TdayUseExample example);
 
     int updateByExampleSelective(@Param("record") TdayUse record, @Param("example") TdayUseExample example);
 

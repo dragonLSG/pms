@@ -66,6 +66,8 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/user/checkAccount*", "anon");
         //发送验证码
         filterChainDefinitionMap.put("/sendCheckNum", "anon");
+        //重设密码
+        filterChainDefinitionMap.put("/resetPasswd", "anon");
 
         //配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
         filterChainDefinitionMap.put("/logout", "logout");

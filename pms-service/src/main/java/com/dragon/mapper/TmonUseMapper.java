@@ -19,6 +19,8 @@ public interface TmonUseMapper {
 
     List<TmonUse> selectByExample(TmonUseExample example);
 
+    List<TmonUse> selectSumUseByExample(TmonUseExample example);
+
     int updateByExampleSelective(@Param("record") TmonUse record, @Param("example") TmonUseExample example);
 
     int updateByExample(@Param("record") TmonUse record, @Param("example") TmonUseExample example);

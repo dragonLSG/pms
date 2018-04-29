@@ -1,5 +1,7 @@
 package com.dragon.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -10,6 +12,7 @@ public class TdayUse implements Serializable {
 
     private BigDecimal delectUse;
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date date;
 
     private BigDecimal dfee;

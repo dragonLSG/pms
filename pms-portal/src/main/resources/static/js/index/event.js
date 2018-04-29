@@ -16,7 +16,6 @@ $(function () {
     function init() {
         //获取使用设备信息，PC还是手机
         IsPC();
-
         //首页 显示通告列表， 一条最新通告内容
         showtable_1(getPageInf(id), "reload")
         var noticeId = $("#table_1 tbody tr td").eq(3).text();
@@ -67,6 +66,11 @@ $(function () {
         //     resetPagination(id, 2, defaultIndex)
         // }
 
+        //显示选中模块
+        $("#module_" + id).css({
+            "display": "block"
+        });
+
         //加载数据
         switch (parseInt(id)) {
             case 1:
@@ -75,7 +79,7 @@ $(function () {
                 showNoticeContent(noticeId);
                 break;
             case 2:
-                // showtable_2(getSearchUserInf("all"), "reload")
+                genChart();
                 break;
             case 3:
                 showtable_3();
@@ -89,11 +93,6 @@ $(function () {
                 showtable_6(getSearchFeedbackInf("all"), "reload")
                 break;
         }
-
-        //显示选中模块
-        $("#module_" + id).css({
-            "display": "block"
-        });
 
         //若为手机操作，自动关闭菜单栏
         if (!isPC) {
@@ -197,12 +196,11 @@ $(function () {
 
     /*************************反馈管理*****************************************/
     /* 查询反馈列表 */
-    $("#module_6 serch_table .btn").click(function () {
+    $("#searchFBbtn").click(function () {
         showtable_6(getSearchFeedbackInf("section"), "reload");
     })
     /*添加反馈*/
     $("#addFBbtn").click(function () {
-
         createRichEditor();
         //点击外部不关闭模态框
         $("#addFBModal").modal({backdrop: 'static', keyboard: false});
@@ -444,8 +442,7 @@ function showtable_6(args, option) {
                     $.each(data.data, function (key, value) {
                         var status = value.fstatus == 0 ? "未处理" : "已处理"
                         var trs = "<tr><td>" + value.fid +
-                            "</td><td>" + value.title + "</td><td><a href='javascript:showFBContent(" + value.fid +
-                            ")'>点击查看内容详情</a></td><td>" + value.sender + "</td><td>" + status +
+                            "</td><td>" + value.title + "</td><td><a onclick='showFBContent(" + value.fid + ")' href='javascript:void(0);'>点击查看内容详情</a></td><td>" + value.sender + "</td><td>" + status +
                             "</td><td>" + value.fdate + "</td></tr>"
                         $("#table_6 tbody").append(trs);
                     })
@@ -461,7 +458,7 @@ function showtable_6(args, option) {
                         if (typeof (data.data[i]) != "undefined") {
                             tds[0].innerHTML = data.data[i].fid;
                             tds[1].innerHTML = data.data[i].title;
-                            tds[2].innerHTML = "<a href='javascript:showFBContent(" + data.data[i].fid + ")'>点击查看内容详情</a>"
+                            tds[2].innerHTML = "<a onclick='showFBContent(" + data.data[i].fid + ")' href='javascript:void(0);'>点击查看内容详情</a>"
                             tds[3].innerHTML = data.data[i].sender;
                             tds[4].innerHTML = (data.data[i].fstatus == 0 ? "未处理" : "已处理");
                             tds[5].innerHTML = data.data[i].fdate;
@@ -502,7 +499,7 @@ function showFBContent(fid) {
 
             if (result.status == "200" && result.data != null) {
 
-                $("#fbContent .modal-title").append(result.data.title);
+                $("#fbContent .modal-title").append("title：" + result.data.title);
                 $("#fbContent .modal-body").append(result.data.content);
                 $("#fbContent .modal-footer").append("by: " + result.data.sender + "&nbsp;&nbsp;&nbsp;Date: " + result.data.fdate);
 

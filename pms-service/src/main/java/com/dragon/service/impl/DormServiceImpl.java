@@ -50,4 +50,17 @@ public class DormServiceImpl implements DormService {
         }
         return num;
     }
+
+    @Override
+    public Tdormitory findDormByName(String dormName) {
+
+        TdormitoryExample example = new TdormitoryExample();
+        Criteria criteria = example.createCriteria();
+        criteria.andDormitorynameEqualTo(dormName);
+        List<Tdormitory> tdormitories = dormMapper.selectByExample(example);
+        if (tdormitories == null) {
+            return null;
+        }
+        return tdormitories.get(0);
+    }
 }

@@ -13,6 +13,7 @@
     <dubbo:service interface="com.dragon.service.UserPermissionService" ref="userPermissionService"/>
     <dubbo:service interface="com.dragon.service.UserService" ref="userService"/>
     <dubbo:service interface="com.dragon.service.SendMsgService" ref="sendMsgService" timeout="20000"/>
+    <dubbo:service interface="com.dragon.service.ElectService" ref="electService"/>
 
 </beans>
 

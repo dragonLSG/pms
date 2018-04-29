@@ -21,32 +21,10 @@
     <link href="css/index/style.css" rel="stylesheet" type="text/css">
     <link href="css/index/index.css" rel="stylesheet" type="text/css">
     <script src="js/plugins/modernizr.min.js"></script>
-    <style type="text/css">/* Chart.js */
-    @-webkit-keyframes chartjs-render-animation {
-        from {
-            opacity: 0.99
-        }
-        to {
-            opacity: 1
-        }
-    }
 
-    @keyframes chartjs-render-animation {
-        from {
-            opacity: 0.99
-        }
-        to {
-            opacity: 1
-        }
-    }
-
-    .chartjs-render-monitor {
-        -webkit-animation: chartjs-render-animation 0.001s;
-        animation: chartjs-render-animation 0.001s;
-    }</style>
 </head>
 
-<body class="">
+<body style="height: 100%; margin: 0">
 
 <!-- Begin page -->
 <div id="wrapper">
@@ -85,10 +63,6 @@
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown" x-placement="bottom-end"
                          style="position: absolute; transform: translate3d(130px, 70px, 0px); top: 0px; left: 0px; will-change: transform;">
                         <!-- item-->
-                        <div class="dropdown-item noti-title">
-                            <h6 class="text-overflow m-0">Welcome !</h6>
-                        </div>
-                        <!-- item-->
                         <a id="logoutBtn" href="javascript:void(0);" class="dropdown-item notify-item">
                             <i class="fi-power"></i> <span>注销</span>
                         </a>
@@ -122,15 +96,13 @@
                         <li class="menu-title">菜单栏</li>
 
                         <li class="menu_item active" id="menu_1" style="background-color: #DCDCDC">
-                            <a href="javascript: void(0);"><i class="fi-clipboard"></i><span>系统公告</span> <span
+                            <a href="javascript: void(0);"><i class="fi-clipboard"></i><span>系统公告</span><span
                                     class="menu-arrow"></span></a>
                         </li>
 
                         <li class="menu_item" id="menu_2">
-                            <a href="javascript: void(0);">
-                                <i class="fi-bar-graph-2"></i><span
-                                    class="badge badge-danger badge-pill pull-right">3</span> <span> 用电查询 </span>
-                            </a>
+                            <a href="javascript: void(0);"><i class="fi-bar-graph-2"></i><span>用电查询</span><span
+                                    class="menu-arrow"></span></a>
                         </li>
 
                         <li class="menu_item" id="menu_3">
@@ -139,18 +111,18 @@
                         </li>
                         <!--menu-arrow-->
                         <li class="menu_item" id="menu_4">
-                            <a href="javascript: void(0);"><i class="fi-location"></i><span> 账单记录 </span> <span
+                            <a href="javascript: void(0);"><i class="fi-location"></i><span>账单记录</span> <span
                                     class="menu-arrow"></span></a>
                         </li>
 
                         <li class="menu_item" id="menu_5">
-                            <a href="javascript: void(0);"><i class="fi-paper"></i> <span>缴纳电费</span> <span
+                            <a href="javascript: void(0);"><i class="fi-paper"></i><span>缴纳电费</span> <span
                                     class="menu-arrow"></span></a>
                         </li>
 
                         <li class="menu_item" id="menu_6">
-                            <a href="javascript: void(0);"><i class="fi-mail"></i><span
-                                    class="badge badge-warning pull-right">09</span> <span>问题反馈</span></a>
+                            <a href="javascript: void(0);"><i class="fi-mail"></i><span>问题反馈</span><span
+                                    class="menu-arrow"></span></a>
                         </li>
 
                     </ul>
@@ -229,424 +201,25 @@
             </div>
             <!--用电查询-->
             <div class="col-md-12 padding-0" id="module_2" style="display: none">
-
-                <!--<div class="row">-->
-                <!--<div class="col-12">-->
-                <!--<div class="page-title-box">-->
-                <!--<h4 class="page-title float-left">Dashboard</h4>-->
-
-                <!--<ol class="breadcrumb float-right">-->
-                <!--<li class="breadcrumb-item"><a-->
-                <!--href="javascript:void(0);">管理系统</a>-->
-                <!--</li>-->
-                <!--<li class="breadcrumb-item active">Dashboard</li>-->
-                <!--</ol>-->
-
-                <!--<div class="clearfix"></div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!-- end row -->
-
-                <div class="row">
-                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
-                        <div class="card-box tilebox-one">
-                            <i class="fi-box float-right"></i>
-                            <h6 class="text-muted text-uppercase mb-3">Orders</h6>
-                            <h4 class="mb-3" data-plugin="counterup">1,587</h4>
-                            <span class="badge badge-primary"> +11% </span> <span
-                                class="text-muted ml-2 vertical-middle">From previous period</span>
-                        </div>
+                <div class="module_wrapper">
+                    <div style="padding:5px 0px">
+                        <span>切换范围视图：</span>
+                        <select id="viewSelect">
+                            <option>日视图</option>
+                            <option>月视图</option>
+                        </select>
+                        <select id="monSelect">
+                            <option id="thisMon">当前月</option>
+                            <option id="lastMon">上个月</option>
+                        </select>
+                        <select id="yearSelect" style="display: none">
+                            <option id="thisYear">当前年</option>
+                            <option id="lastYear">上一年</option>
+                        </select>
+                        <button onclick="genChart()" class="btn btn-default" style="margin-top: -5px;">确认切换</button>
                     </div>
-
-                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
-                        <div class="card-box tilebox-one">
-                            <i class="fi-layers float-right"></i>
-                            <h6 class="text-muted text-uppercase mb-3">Revenue</h6>
-                            <h4 class="mb-3">$<span data-plugin="counterup">46,782</span></h4>
-                            <span class="badge badge-primary"> -29% </span> <span
-                                class="text-muted ml-2 vertical-middle">From previous period</span>
-                        </div>
-                    </div>
-
-                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
-                        <div class="card-box tilebox-one">
-                            <i class="fi-tag float-right"></i>
-                            <h6 class="text-muted text-uppercase mb-3">Average Price</h6>
-                            <h4 class="mb-3">$<span data-plugin="counterup">15.9</span></h4>
-                            <span class="badge badge-primary"> 0% </span> <span class="text-muted ml-2 vertical-middle">From previous period</span>
-                        </div>
-                    </div>
-
-                    <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
-                        <div class="card-box tilebox-one">
-                            <i class="fi-briefcase float-right"></i>
-                            <h6 class="text-muted text-uppercase mb-3">Product Sold</h6>
-                            <h4 class="mb-3" data-plugin="counterup">1,890</h4>
-                            <span class="badge badge-primary"> +89% </span> <span
-                                class="text-muted ml-2 vertical-middle">Last year</span>
-                        </div>
-                    </div>
+                    <div id="container1" style="height: 80vh"></div>
                 </div>
-
-                <div class="row">
-                    <div class="col-xl-7">
-                        <div class="card-box">
-                            <div class="chartjs-size-monitor"
-                                 style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                                <div class="chartjs-size-monitor-expand"
-                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                                </div>
-                                <div class="chartjs-size-monitor-shrink"
-                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                                </div>
-                            </div>
-                            <h4 class="header-title">Transactions History</h4>
-
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="text-center mt-3">
-                                        <h6 class="font-normal text-muted font-14">Conversion Rate</h6>
-                                        <h6 class="font-18"><i
-                                                class="mdi mdi-arrow-up-bold-hexagon-outline text-success"></i> <span
-                                                class="text-dark">1.78%</span>
-                                            <small></small>
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="text-center mt-3">
-                                        <h6 class="font-normal text-muted font-14">Average Order Value</h6>
-                                        <h6 class="font-18"><i
-                                                class="mdi mdi-arrow-up-bold-hexagon-outline text-success"></i> <span
-                                                class="text-dark">25.87</span>
-                                            <small>USD</small>
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="text-center mt-3">
-                                        <h6 class="font-normal text-muted font-14">Total Wallet Balance</h6>
-                                        <h6 class="font-18"><i
-                                                class="mdi mdi-arrow-up-bold-hexagon-outline text-success"></i> <span
-                                                class="text-dark">87,4517</span>
-                                            <small>USD</small>
-                                        </h6>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <canvas id="transactions-chart" height="459" class="mt-4 chartjs-render-monitor" width="855"
-                                    style="display: block; height: 401px; width: 747px;"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-xl-5">
-                        <div class="card-box">
-                            <div class="chartjs-size-monitor"
-                                 style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                                <div class="chartjs-size-monitor-expand"
-                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                                </div>
-                                <div class="chartjs-size-monitor-shrink"
-                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                                </div>
-                            </div>
-                            <h4 class="header-title">Sales History</h4>
-
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="text-center mt-3">
-                                        <h6 class="font-normal text-muted font-14">Conversion Rate</h6>
-                                        <h6 class="font-18"><i
-                                                class="mdi mdi-arrow-up-bold-hexagon-outline text-success"></i> <span
-                                                class="text-dark">3.94%</span>
-                                            <small></small>
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="text-center mt-3">
-                                        <h6 class="font-normal text-muted font-14">Average Sales</h6>
-                                        <h6 class="font-18"><i
-                                                class="mdi mdi-arrow-down-bold-hexagon-outline text-danger"></i> <span
-                                                class="text-dark">16.25</span>
-                                            <small>USD</small>
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="text-center mt-3">
-                                        <h6 class="font-normal text-muted font-14">Total Sales</h6>
-                                        <h6 class="font-18"><i
-                                                class="mdi mdi-arrow-up-bold-hexagon-outline text-success"></i> <span
-                                                class="text-dark">124,858.67</span>
-                                            <small>USD</small>
-                                        </h6>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <canvas id="sales-history" height="459" class="mt-4 chartjs-render-monitor" width="587"
-                                    style="display: block; height: 401px; width: 513px;"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <!-- end row -->
-
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="card-box">
-                            <h4 class="header-title mb-4">Messages</h4>
-
-                            <div class="slimScrollDiv"
-                                 style="position: relative; overflow: hidden; width: auto; height: 433.886px;">
-                                <div class="inbox-widget slimscroll"
-                                     style="max-height: 370px; overflow: hidden; width: auto; height: 433.886px;">
-                                    <a href="javascript:void(0);">
-                                        <div class="inbox-item">
-                                            <div class="inbox-item-img"><img src="img/avatar-1.jpg"
-                                                                             class="rounded-circle bx-shadow-lg" alt="">
-                                            </div>
-                                            <p class="inbox-item-author">Chadengle</p>
-                                            <p class="inbox-item-text">Hey! there I'm available...</p>
-                                            <p class="inbox-item-date">13:40 PM</p>
-                                        </div>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                        <div class="inbox-item">
-                                            <div class="inbox-item-img"><img src="img/avatar-2.jpg"
-                                                                             class="rounded-circle bx-shadow-lg" alt="">
-                                            </div>
-                                            <p class="inbox-item-author">Tomaslau</p>
-                                            <p class="inbox-item-text">I've finished it! See you so...</p>
-                                            <p class="inbox-item-date">13:34 PM</p>
-                                        </div>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                        <div class="inbox-item">
-                                            <div class="inbox-item-img"><img src="img/avatar-3.jpg"
-                                                                             class="rounded-circle bx-shadow-lg" alt="">
-                                            </div>
-                                            <p class="inbox-item-author">Stillnotdavid</p>
-                                            <p class="inbox-item-text">This theme is awesome!</p>
-                                            <p class="inbox-item-date">13:17 PM</p>
-                                        </div>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                        <div class="inbox-item">
-                                            <div class="inbox-item-img"><img src="img/avatar-4.jpg"
-                                                                             class="rounded-circle bx-shadow-lg" alt="">
-                                            </div>
-                                            <p class="inbox-item-author">Kurafire</p>
-                                            <p class="inbox-item-text">Nice to meet you</p>
-                                            <p class="inbox-item-date">12:20 PM</p>
-                                        </div>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                        <div class="inbox-item">
-                                            <div class="inbox-item-img"><img src="img/avatar-5.jpg"
-                                                                             class="rounded-circle bx-shadow-lg" alt="">
-                                            </div>
-                                            <p class="inbox-item-author">Shahedk</p>
-                                            <p class="inbox-item-text">Hey! there I'm available...</p>
-                                            <p class="inbox-item-date">10:15 AM</p>
-                                        </div>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                        <div class="inbox-item">
-                                            <div class="inbox-item-img"><img src="img/avatar-6.jpg"
-                                                                             class="rounded-circle bx-shadow-lg" alt="">
-                                            </div>
-                                            <p class="inbox-item-author">Adhamdannaway</p>
-                                            <p class="inbox-item-text">This theme is awesome!</p>
-                                            <p class="inbox-item-date">9:56 AM</p>
-                                        </div>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                        <div class="inbox-item">
-                                            <div class="inbox-item-img"><img src="img/avatar-8.jpg"
-                                                                             class="rounded-circle bx-shadow-lg" alt="">
-                                            </div>
-                                            <p class="inbox-item-author">Arashasghari</p>
-                                            <p class="inbox-item-text">Hey! there I'm available...</p>
-                                            <p class="inbox-item-date">10:15 AM</p>
-                                        </div>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                        <div class="inbox-item">
-                                            <div class="inbox-item-img"><img src="img/avatar-9.jpg"
-                                                                             class="rounded-circle bx-shadow-lg" alt="">
-                                            </div>
-                                            <p class="inbox-item-author">Joshaustin</p>
-                                            <p class="inbox-item-text">I've finished it! See you so...</p>
-                                            <p class="inbox-item-date">9:56 AM</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="slimScrollBar"
-                                     style="background: rgb(158, 165, 171); width: 8px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 257.809px;"></div>
-                                <div class="slimScrollRail"
-                                     style="width: 8px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card-box">
-                            <h4 class="header-title mb-4">Latest Comments</h4>
-
-                            <div class="slimScrollDiv"
-                                 style="position: relative; overflow: hidden; width: auto; height: 433.886px;">
-                                <div class="comment-list slimscroll"
-                                     style="max-height: 370px; overflow: hidden; width: auto; height: 433.886px;">
-                                    <a href="javascript:void(0);">
-                                        <div class="comment-box-item">
-                                            <div class="badge badge-pill badge-success">Ubold - Admin</div>
-                                            <p class="commnet-item-date">1 month ago</p>
-                                            <h6 class="commnet-item-msg">Do you have any plans to add a vertical
-                                                menu?</h6>
-                                            <p class="commnet-item-user">Ubold User</p>
-                                        </div>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                        <div class="comment-box-item">
-                                            <div class="badge badge-pill badge-warning">Adminox - Admin</div>
-                                            <p class="commnet-item-date">1 month ago</p>
-                                            <h6 class="commnet-item-msg">Hello, what is your plan to upgrade Bootstrap 4
-                                                versions? Beta or wait for stable?</h6>
-                                            <p class="commnet-item-user">Ubold User</p>
-                                        </div>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                        <div class="comment-box-item">
-                                            <div class="badge badge-pill badge-primary">Staro - Landing</div>
-                                            <p class="commnet-item-date">1 month ago</p>
-                                            <h6 class="commnet-item-msg">Hi coderthemes – do you have PSD for this admin
-                                                UI? I could really use it.</h6>
-                                            <p class="commnet-item-user">Ubold User</p>
-                                        </div>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                        <div class="comment-box-item">
-                                            <div class="badge badge-pill badge-dark">Ubold - Admin</div>
-                                            <p class="commnet-item-date">1 month ago</p>
-                                            <h6 class="commnet-item-msg">Do you have any plans to add a vertical
-                                                menu?</h6>
-                                            <p class="commnet-item-user">Ubold User</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="slimScrollBar"
-                                     style="background: rgb(158, 165, 171); width: 8px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 310.423px;"></div>
-                                <div class="slimScrollRail"
-                                     style="width: 8px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4">
-                        <div class="card-box">
-                            <h4 class="header-title mb-4">Last Transactions</h4>
-
-                            <div class="slimScrollDiv"
-                                 style="position: relative; overflow: hidden; width: auto; height: 433.886px;">
-                                <ul class="list-unstyled transaction-list slimscroll mb-0"
-                                    style="max-height: 370px; overflow: hidden; width: auto; height: 433.886px;">
-                                    <li>
-                                        <i class="dripicons-arrow-down text-success"></i>
-                                        <span class="tran-text">Advertising</span>
-                                        <span class="pull-right text-success tran-price">+$230</span>
-                                        <span class="pull-right text-muted">07/09/2017</span>
-                                        <span class="clearfix"></span>
-                                    </li>
-
-                                    <li>
-                                        <i class="dripicons-arrow-up text-danger"></i>
-                                        <span class="tran-text">Support licence</span>
-                                        <span class="pull-right text-danger tran-price">-$965</span>
-                                        <span class="pull-right text-muted">07/09/2017</span>
-                                        <span class="clearfix"></span>
-                                    </li>
-
-                                    <li>
-                                        <i class="dripicons-arrow-down text-success"></i>
-                                        <span class="tran-text">Extended licence</span>
-                                        <span class="pull-right text-success tran-price">+$830</span>
-                                        <span class="pull-right text-muted">07/09/2017</span>
-                                        <span class="clearfix"></span>
-                                    </li>
-
-                                    <li>
-                                        <i class="dripicons-arrow-down text-success"></i>
-                                        <span class="tran-text">Advertising</span>
-                                        <span class="pull-right text-success tran-price">+$230</span>
-                                        <span class="pull-right text-muted">05/09/2017</span>
-                                        <span class="clearfix"></span>
-                                    </li>
-
-                                    <li>
-                                        <i class="dripicons-arrow-up text-danger"></i>
-                                        <span class="tran-text">New plugins added</span>
-                                        <span class="pull-right text-danger tran-price">-$452</span>
-                                        <span class="pull-right text-muted">05/09/2017</span>
-                                        <span class="clearfix"></span>
-                                    </li>
-
-                                    <li>
-                                        <i class="dripicons-arrow-down text-success"></i>
-                                        <span class="tran-text">Google Inc.</span>
-                                        <span class="pull-right text-success tran-price">+$230</span>
-                                        <span class="pull-right text-muted">04/09/2017</span>
-                                        <span class="clearfix"></span>
-                                    </li>
-
-                                    <li>
-                                        <i class="dripicons-arrow-up text-danger"></i>
-                                        <span class="tran-text">Facebook Ad</span>
-                                        <span class="pull-right text-danger tran-price">-$364</span>
-                                        <span class="pull-right text-muted">03/09/2017</span>
-                                        <span class="clearfix"></span>
-                                    </li>
-
-                                    <li>
-                                        <i class="dripicons-arrow-down text-success"></i>
-                                        <span class="tran-text">New sale</span>
-                                        <span class="pull-right text-success tran-price">+$230</span>
-                                        <span class="pull-right text-muted">03/09/2017</span>
-                                        <span class="clearfix"></span>
-                                    </li>
-
-                                    <li>
-                                        <i class="dripicons-arrow-down text-success"></i>
-                                        <span class="tran-text">Advertising</span>
-                                        <span class="pull-right text-success tran-price">+$230</span>
-                                        <span class="pull-right text-muted">29/08/2017</span>
-                                        <span class="clearfix"></span>
-                                    </li>
-
-                                    <li>
-                                        <i class="dripicons-arrow-up text-danger"></i>
-                                        <span class="tran-text">Support licence</span>
-                                        <span class="pull-right text-danger tran-price">-$854</span>
-                                        <span class="pull-right text-muted">27/08/2017</span>
-                                        <span class="clearfix"></span>
-                                    </li>
-                                </ul>
-                                <div class="slimScrollBar"
-                                     style="background: rgb(158, 165, 171); width: 8px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 319.106px;"></div>
-                                <div class="slimScrollRail"
-                                     style="width: 8px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-
             </div>
             <!--个人信息-->
             <div class="col-md-12 padding-0" id="module_3" style="display: none">
@@ -973,7 +546,7 @@
                                         </select></td>
                                     </tr>
                                 </table>
-                                <button class="btn btn-primary" type="button" style="margin:10px auto;"
+                                <button id="searchFBbtn" class="btn btn-primary" type="button" style="margin:10px auto;"
                                         value="搜索">搜索
                                 </button>
                             </div>
@@ -1051,8 +624,31 @@
 
                                 <!-- 模态框底部 -->
                                 <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭
+                                    </button>
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">提交
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="fbContent">
+                        <div class="modal-dialog">
+                            <div class="modal-content modal-lg">
+
+                                <!-- 模态框头部 -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title" style="display: contents"></h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- 模态框主体 -->
+                                <div class="modal-body"></div>
+
+                                <!-- 模态框底部 -->
+                                <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                                    <button type="button" class="btn btn-success" data-dismiss="modal">提交</button>
                                 </div>
 
                             </div>
@@ -1060,7 +656,6 @@
                     </div>
                 </div>
             </div>
-
         </div> <!-- content -->
 
         <footer class="footer text-right">
@@ -1112,16 +707,12 @@
 <script src="js/index/jquery.waypoints.min.js"></script>
 <script src="js/index/jquery.counterup.min.js"></script>
 
-<!-- Chart JS -->
-<script src="js/plugins/chart.bundle.js"></script>
-
-<!-- init dashboard -->
-<script src="js/index/jquery.dashboard.init.js"></script>
-
 <!-- App js -->
 <script src="js/index/jquery.core.js"></script>
 <script src="js/index/jquery.app.js"></script>
 
+<script src="js/plugins/echarts.common.min.js"></script>
+<script src="js/index/genChart.js"></script>
 <!--index js-->
 <script src="js/index/event.js"></script>
 

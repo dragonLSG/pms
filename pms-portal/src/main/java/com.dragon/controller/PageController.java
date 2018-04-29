@@ -14,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,7 +24,9 @@ public class PageController {
     @Autowired
     private UserService userService;
     @Autowired
-    private SendMsgService emailService;
+    private SendMsgService sendMsgService;
+    @Autowired
+    private JedisPool jedisPool;
 
     @GetMapping("/")
     public String index() {
@@ -66,23 +70,43 @@ public class PageController {
     }
 
     @PostMapping("/regUser")
-    public String doRegist(Tuser user) {
+    public String doRegist(Tuser user, HttpServletRequest request) {
         int num = 0;
         try {
             num = userService.addUser(user);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return "regSuccess";
+        request.setAttribute("msg", "恭喜您成功注册到电力管理系统");
+        return "success";
     }
 
     @GetMapping("/sendCheckNum")
     @ResponseBody
     public PMSResult sendCheckNum(String account, String phone, String email) {
 
-        PMSResult result = emailService.sendCheckNum(account, phone, email);
+        PMSResult result = sendMsgService.sendCheckNum(account, phone, email);
 
         return result;
+    }
+
+    @PostMapping("/resetPasswd")
+    public String resetPasswd(Tuser user, String checkNum, HttpServletRequest request) {
+
+        Jedis resource = jedisPool.getResource();
+        String checkNumDB = "";
+        if (user.getEmail() != null && !"".equals(user.getEmail())) {
+            checkNumDB = resource.get("checkNum:" + user.getAccount() + ":" + user.getEmail());
+        } else {
+            checkNumDB = resource.get("checkNum:" + user.getAccount() + ":" + user.getMobile());
+        }
+        //检查校验码
+        if (checkNum.equals(checkNumDB)) {
+            userService.updateUser(user);
+            request.setAttribute("msg", "您已成功重置密码，请使用新密码登陆系统！");
+            return "success";
+        }
+        request.setAttribute("msg", "校验码错误，重置密码失败，请检查或重新获取校验码");
+        return "fail";
     }
 }

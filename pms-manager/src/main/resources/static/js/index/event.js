@@ -8,6 +8,16 @@ var noticeEditor = null;
  */
 $(function () {
 
+
+    init();
+
+
+    function init() {
+        //获取设备信息
+        IsPC();
+        //初始化统计信息
+        genChart();
+    }
     //判断是手机还是PC访问
     function IsPC() {
         var userAgentInfo = navigator.userAgent;
@@ -23,8 +33,6 @@ $(function () {
         }
         return isPC;
     }
-
-    IsPC();
 
     /*注销账户*/
     $("#logoutBtn").click(function () {
@@ -65,10 +73,15 @@ $(function () {
         var menu_id = $(this).attr("id");
         id = menu_id.split("_")[1];
 
+        //显示选中模块
+        $("#module_" + id).css({
+            "display": "block"
+        });
+
         //加载数据
         switch (parseInt(id)) {
             case 1:
-                showNoticeList();
+                genChart();
                 break;
             case 2:
                 showtable_2(getSearchUserInf("all"), "reload")
@@ -83,11 +96,6 @@ $(function () {
                 showtable_5(getSearchFeedbackInf("all"), "reload")
                 break;
         }
-
-        //显示选中模块
-        $("#module_" + id).css({
-            "display": "block"
-        });
 
         //若为手机操作，自动关闭菜单栏
         if (!isPC) {

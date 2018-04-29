@@ -84,6 +84,17 @@
             order by ${orderByClause}
         </if>
     </select>
+    <select id="selectSumUseByExample" resultMap="BaseResultMap" parameterType="com.dragon.pojo.TdayUseExample">
+        select "" as dormitoryid, sum(delect_use) as delect_use, date, sum(dfee) as dfee
+        from tday_use
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        GROUP BY date
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
     <delete id="deleteByExample" parameterType="com.dragon.pojo.TdayUseExample">
         delete from tday_use
         <if test="_parameter != null">

@@ -13,6 +13,8 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 import java.util.List;
 
@@ -21,6 +23,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private TuserMapper userMapper;
+    @Autowired
+    private JedisPool jedisPool;
 
     @Override
     public DataList findUsersByArgs(User user) throws Exception {
@@ -86,6 +90,28 @@ public class UserServiceImpl implements UserService {
             user.setPasswd(newPasswd);
             num = userMapper.insertSelective(user);
         }
+        return num;
+    }
+
+    @Override
+    public Integer updateUser(Tuser user) {
+
+        //删除checkNum key
+        Jedis resource = jedisPool.getResource();
+        if (user.getEmail() != null && user.getEmail() != "") {
+            resource.del("checkNum:" + user.getAccount() + ":" + user.getEmail());
+            user.setMobile(null);
+        } else {
+            resource.del("checkNum:" + user.getAccount() + ":" + user.getMobile());
+            user.setEmail(null);
+        }
+
+        //加密密码
+        String password = PasswordHelper.encryptPassword(user.getAccount(), user.getPasswd());
+        user.setPasswd(password);
+        //更新用户
+        Integer num = userMapper.updateByPrimaryKeySelective(user);
+
         return num;
     }
 }
