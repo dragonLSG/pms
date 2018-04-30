@@ -76,6 +76,8 @@ public class PageController {
             num = userService.addUser(user);
         } catch (Exception e) {
             e.printStackTrace();
+            request.setAttribute("msg", "注册失败，请重新注册！");
+            return "fail";
         }
         request.setAttribute("msg", "恭喜您成功注册到电力管理系统");
         return "success";

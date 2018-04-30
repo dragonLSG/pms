@@ -10,8 +10,7 @@
 
     <link rel="shortcut icon" href="/img/favicon.ico"/>
     <!-- Vendor CSS -->
-    <link href="css/login/material-design-iconic-font/css/material-design-iconic-font.min.css" rel="stylesheet"
-          type="text/css">
+    <link href="css/login/material-design-iconic-font.min.css" rel="stylesheet" type="text/css">
     <!-- CSS -->
     <link href="css/login/app.min.1.css" rel="stylesheet" type="text/css">
 </head>
@@ -44,15 +43,6 @@
 
         <div class="clearfix"></div>
 
-        <ul class="">
-            <li style="display: inline;" data-ng-click="lctrl.login = 0; lctrl.register = 1"><a
-                    href="javascript:void(0);">注册</a></li>
-            <!--login-navigation -->
-            <li style="display: inline">&nbsp;&nbsp;</li>
-            <li style="display: inline;" data-block="#l-forget-password"
-                data-ng-click="lctrl.login = 0; lctrl.forgot = 1"><a href="javascript:void(0);">忘记密码?</a></li>
-        </ul>
-
         <a onclick="submitLogin();return false;" href="javascript:void(0);" class="btn btn-login btn-danger btn-float">
             <i class="zmdi zmdi-arrow-forward"></i>
         </a>
@@ -60,83 +50,10 @@
 
 </div>
 
-<div class="lc-block" id="l-register" data-ng-class="{ 'toggled': lctrl.register === 1 }"
-     data-ng-if="lctrl.register === 1">
-    <h1 class="lean">注册</h1>
-
-    <div class="input-group m-b-20">
-    		<span class="input-group-addon">
-    			<i class="zmdi zmdi-account"></i>
-    		</span>
-        <div class="fg-line">
-            <input type="text" class="form-control" placeholder="账号" regex="^\w{3,16}$"/>
-        </div>
-    </div>
-
-    <div class="input-group m-b-20">
-    		<span class="input-group-addon">
-    			<i class="zmdi zmdi-email"></i>
-    		</span>
-        <div class="fg-line">
-            <input type="text" class="form-control" placeholder="邮箱" regex="^\w+@\w+\.[a-zA-Z]+(\.[a-zA-Z]+)?$"/>
-        </div>
-    </div>
-
-    <div class="input-group m-b-20">
-    		<span class="input-group-addon">
-    			<i class="zmdi zmdi-male"></i>
-    		</span>
-        <div class="fg-line">
-            <input type="password" class="form-control" placeholder="密码" regex="^\w+"/>
-        </div>
-    </div>
-
-    <div class="clearfix"></div>
-
-    <div class="checkbox">
-        <label>
-            <input type="checkbox" value=""/>
-            <i class="input-helper"></i>
-            接受协议
-        </label>
-    </div>
-    <ul>
-        <li style="display: inline" data-block="#l-login" data-ng-click="lctrl.register = 0; lctrl.login = 1"><a
-                href="javascript:void(0);">登陆</a></li>
-        <li style="display: inline">&nbsp;&nbsp;</li>
-        <li style="display: inline" data-block="#l-forget-password"
-            data-ng-click="lctrl.register = 0; lctrl.forgot = 1"><a href="javascript:void(0);">忘记密码?</a></li>
-    </ul>
-    <a href="javascript:void(0)" class="btn btn-login btn-danger btn-float"><i class="zmdi zmdi-arrow-forward"></i></a>
-</div>
-
-<div class="lc-block" id="l-forget-password" data-ng-class="{ 'toggled': lctrl.forgot === 1 }"
-     data-ng-if="lctrl.forgot === 1">
-    <h1 class="lean">找回密码</h1>
-    <p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu risus. Curabitur commodo
-        lorem fringilla enim feugiat commodo sed ac lacus.</p>
-    <div class="input-group m-b-20">
-        <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
-        <div class="fg-line">
-            <input type="text" class="form-control" placeholder="邮箱" regex="^\w+@\w+\.[a-zA-Z]+(\.[a-zA-Z]+)?$"/>
-        </div>
-    </div>
-
-    <ul class="">
-        <li style="display: inline" data-block="#l-login" data-ng-click="lctrl.forgot = 0; lctrl.login = 1"><a
-                href="javascript:void(0);">登陆</a></li>
-        <li style="display: inline">&nbsp;&nbsp;</li>
-        <li style="display: inline" data-block="#l-register" data-ng-click="lctrl.forgot = 0; lctrl.register = 1"><a
-                href="javascript:void(0);">注册</a></li>
-    </ul>
-    <a href="index.html" class="btn btn-login btn-danger btn-float"><i class="zmdi zmdi-arrow-forward"></i></a>
-</div>
-
 </body>
 
 
 <script src="js/login/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="js/login/log.js"></script>
 <!-- Angular -->
 <script src="js/login/bower_components/angular/angular.min.js"></script>
 <script src="js/login/bower_components/angular-resource/angular-resource.min.js"></script>

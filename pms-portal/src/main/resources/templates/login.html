@@ -17,7 +17,6 @@
     <link href="css/login/app.min.1.css" rel="stylesheet" type="text/css">
 
 </head>
-
 <body class="login-content" data-ng-controller="loginCtrl as lctrl">
 
 <div class="lc-block" id="l-login" data-ng-class="{'toggled':lctrl.login === 1}">
@@ -70,7 +69,8 @@
     			<i class="zmdi zmdi-account"></i>
     		</span>
             <div class="fg-line">
-                <input name="account" type="text" class="form-control" placeholder="账号" regex="^\w{3,16}$"/>
+                <input onkeydown="noEnter(this);" name="account" type="text" class="form-control" placeholder="账号"
+                       regex="^\w{3,16}$"/>
             </div>
         </div>
         <!--username-->
@@ -79,7 +79,8 @@
     			<i class="zmdi zmdi-male"></i>
     		</span>
             <div class="fg-line">
-                <input name="username" type="text" class="form-control" placeholder="用户名" regex="^\w+"/>
+                <input onkeydown="noEnter(this);" name="username" type="text" class="form-control" placeholder="用户名"
+                       regex="^\w+"/>
             </div>
         </div>
         <!--password-->
@@ -88,7 +89,8 @@
     			<i class="zmdi zmdi-paste"></i>
     		</span>
             <div class="fg-line">
-                <input name="password" type="password" class="form-control" placeholder="密码" regex="^\w+"/>
+                <input onkeydown="noEnter(this);" name="passwd" type="password" class="form-control" placeholder="密码"
+                       regex="^\w+"/>
             </div>
         </div>
         <!--dorm-->
@@ -96,7 +98,8 @@
     		<span class="input-group-addon">
     			<i class="zmdi zmdi-pin-drop"></i>
     		</span>
-            <div class="fg-line" id="dormName">
+            <input hidden type="text" id="dormitoryname" name="dormitoryname">
+            <div class="fg-line" value="" id="dormName">
                 <select>
                     <option>东</option>
                     <option>西</option>
@@ -117,8 +120,7 @@
                     <option>十二</option>
                 </select>
                 &nbsp;
-                <input name="dorm" placeholder="宿舍号"/>
-
+                <input onkeydown="noEnter(this);" placeholder="宿舍号"/>
             </div>
         </div>
         <!--phone-->
@@ -127,7 +129,7 @@
     			<i class="zmdi zmdi-phone"></i>
     		</span>
             <div class="fg-line">
-                <input name="phone" type="text" class="form-control" placeholder="手机号"
+                <input onkeydown="noEnter(this);" name="mobile" type="text" class="form-control" placeholder="手机号"
                        regex="^[1][3,4,5,7,8][0-9]{9}$$"/>
             </div>
         </div>
@@ -137,7 +139,8 @@
     			<i class="zmdi zmdi-check"></i>
     		</span>
             <div style="padding-left: 10px;" class="">
-                <input name="checkNum" style="width: 55%; padding: 6px 12px;" type="text" class="fg-line form-control"
+                <input onkeydown="noEnter(this);" name="checkNum" style="width: 55%; padding: 6px 12px;" type="text"
+                       class="fg-line form-control"
                        placeholder="校验码"/>
                 <button class="btn btn-default"><span>获取校验码</span></button>
             </div>
@@ -148,7 +151,8 @@
     			<i class="zmdi zmdi-email"></i>
     		</span>
             <div class="fg-line">
-                <input name="email" type="text" class="form-control" placeholder="邮箱 1234@gmail.com"/>
+                <input onkeydown="noEnter(this);" name="email" type="text" class="form-control"
+                       placeholder="邮箱 1234@gmail.com"/>
             </div>
         </div>
 
@@ -265,7 +269,7 @@
 </body>
 
 <script src="js/login/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="js/login/log.js"></script>
+<script src="js/login/validator.js"></script>
 <!-- Angular -->
 <script src="js/login/bower_components/angular/angular.min.js"></script>
 <script src="js/login/bower_components/angular-resource/angular-resource.min.js"></script>
@@ -282,9 +286,6 @@
 <script src="js/login/bower_components/ng-table/dist/ng-table.min.js"></script>
 
 <!-- Placeholder for IE9 -->
-<!--[if IE 9 ]>
-<script src="js/login/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
-<![endif]-->
 <!-- App level -->
 <script src="js/login/app.js"></script>
 <script src="js/login/controllers/main.js"></script>
@@ -292,5 +293,4 @@
 
 <!-- Template Modules -->
 <script src="js/login/modules/form.js"></script>
-<script src="js/login/validator.js"></script>
 </html>

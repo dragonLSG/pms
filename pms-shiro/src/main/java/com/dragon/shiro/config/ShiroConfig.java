@@ -62,6 +62,8 @@ public class ShiroConfig {
         // 登陆验证
         filterChainDefinitionMap.put("/doLogin", "anon");
 
+        //注册
+        filterChainDefinitionMap.put("/regUser", "anon");
         // 注册验证账号是否存在
         filterChainDefinitionMap.put("/user/checkAccount*", "anon");
         //发送验证码
@@ -69,10 +71,9 @@ public class ShiroConfig {
         //重设密码
         filterChainDefinitionMap.put("/resetPasswd", "anon");
 
+
         //配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
         filterChainDefinitionMap.put("/logout", "logout");
-
-        // 其他 url请求需要认证
         filterChainDefinitionMap.put("/**", "authc");
 
         // 默认的登陆页面，，不通过的请求都会转到 login.html
