@@ -45,7 +45,7 @@ public class FeedBackController {
 
     @ApiOperation(value = "获取反馈内容", notes = "根据来获取反馈内容")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "noticeid", value = "notice的id", dataType = "String", paramType = "query")
+            @ApiImplicitParam(name = "feedbackId", value = "feedback的id", dataType = "String", paramType = "query")
     })
     @GetMapping("/content")
     public PMSResult getNoticeContentById(Integer fId) {
@@ -72,6 +72,23 @@ public class FeedBackController {
         Integer num = null;
         try {
             num = service.delFeedBacks(fIds);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return PMSResult.Fail();
+        }
+        return PMSResult.Ok(num, "success");
+    }
+
+
+    @ApiOperation(value = "更新反馈状态为已完成", notes = "更新反馈状态为已完成")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "feedbackId", value = "feedback的id", dataType = "String", paramType = "query")
+    })
+    @GetMapping("/handle")
+    public PMSResult updateStatus(Integer fId) {
+        Integer num = null;
+        try {
+            num = service.updateStatus(fId);
         } catch (Exception e) {
             e.printStackTrace();
             return PMSResult.Fail();

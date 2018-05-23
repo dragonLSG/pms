@@ -4,12 +4,9 @@ import com.github.pagehelper.PageInfo;
 
 import java.io.Serializable;
 
-public class PageInf implements Serializable {
-
+public class PageInf extends PageSizeAndNum implements Serializable {
     private static final long serialVersionUID = 3974397181187306593L;
 
-    private long pageNum;
-    private long pageSize;
     private long totalNum; //总记录数
     private long totalPageNum;    //总页数
 
@@ -21,22 +18,6 @@ public class PageInf implements Serializable {
         this.pageSize = pageInfo.getPageSize();
         this.totalNum = pageInfo.getTotal();
         this.totalPageNum = (long) Math.ceil((double) this.totalNum / this.pageSize);
-    }
-
-    public long getPageNum() {
-        return pageNum;
-    }
-
-    public void setPageNum(long pageNum) {
-        this.pageNum = pageNum;
-    }
-
-    public long getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(long pageSize) {
-        this.pageSize = pageSize;
     }
 
     public long getTotalNum() {

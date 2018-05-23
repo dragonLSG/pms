@@ -130,6 +130,49 @@
     padding: 10px !important;
 }
 
+/*pay bill*/
+
+.pay-title {
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    color: #e5ac06;
+    letter-spacing: 1px;
+}
+
+.pay-content {
+    width: 60%;
+    margin: auto;
+    font-size: 2em;
+    /*height: 20em*/
+}
+
+.pay-amount {
+    margin: auto;
+    width: 50%;
+    padding: 20px
+}
+
+.pay-amount input {
+    padding: 0;
+}
+
+.pay-btn {
+    font-size: 0.8em;
+    padding: 5px 20px !important;
+}
+
+.pay-check {
+    width: 30%;
+    display: block;
+    margin: auto
+}
+
+.pay-check-table {
+    padding: 30px;
+}
+
 @media screen and (max-width: 1367px) {
     .pagination > li > a, .pagination > li > span {
         padding: 3px 6px;
@@ -187,4 +230,25 @@
         width: 45%;
     }
 
+    .pay-content {
+        width: 100%;
+        font-size: 20px;
+    }
+
+    .pay-amount {
+        width: 100%;
+    }
+
+    .pay-check {
+        width: 60%;
+    }
+
+    .pay-title {
+        width: 100%;
+    }
+
+    .pay-check-table {
+        padding: 10px 0px;
+    }
 }
+

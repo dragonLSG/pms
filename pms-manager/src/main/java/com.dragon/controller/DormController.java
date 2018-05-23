@@ -2,6 +2,7 @@ package com.dragon.controller;
 
 import com.dragon.common.DataList;
 import com.dragon.common.PMSResult;
+import com.dragon.pojo.Tdormitory;
 import com.dragon.service.DormService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -71,10 +72,13 @@ public class DormController {
     @PutMapping("/{dormId}")
     @RequiresPermissions("dorm:add:all")
     public PMSResult addDorm() {
-
-
         return null;
     }
 
+    @PostMapping("/update")
+    @RequiresPermissions("dorm:add:all")
+    public PMSResult updateDorm(Tdormitory dorm) {
+        return null;
+    }
 
 }

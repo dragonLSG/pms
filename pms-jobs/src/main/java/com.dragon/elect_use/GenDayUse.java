@@ -16,7 +16,7 @@ public class GenDayUse {
     private static Statement stmt = null;
     private static Connection conn = null;
     private static List<String> list = null;
-    private static String date = "2017-01-01 00:00:00";
+    private static String date = "2018-05-22 00:00:00";
     private static float price = 0.0f;
 
     // 初始化

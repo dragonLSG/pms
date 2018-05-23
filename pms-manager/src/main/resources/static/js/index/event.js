@@ -8,10 +8,7 @@ var noticeEditor = null;
  */
 $(function () {
 
-
     init();
-
-
     function init() {
         //获取设备信息
         IsPC();
@@ -360,7 +357,7 @@ function deleteBySelects(ReqUrl, selects) {
         dataType: 'json',
         timeout: '10000',
         success: function (result) {
-            if (result.status == "200" && result.data != null) {
+            if (result.status == "200" && result.data.length != 0) {
                 alert("共" + result.data + "条记录，删除成功!")
                 switchToShow(id, "reset")
             } else if (result.status == "500") {
@@ -390,7 +387,7 @@ function showNoticeList(pageSize) {
         data: args,
         dataType: 'json',
         success: function (result, status) {
-            if (result.status == "200" && result.data != null) {
+            if (result.status == "200" && result.data.length != 0) {
 
                 var data = result.data;
                 $.each(data.data, function (key, value) {
@@ -443,7 +440,7 @@ function showtable_2(args, option) {
         timeout: '10000',
         data: args,
         success: function (result) {
-            if (result.status == "200" && result.data != null) {
+            if (result.status == "200" && result.data.length != 0) {
                 var data = result.data;
                 if (option == "reload") {
                     ajaxPageInf = null;
@@ -454,7 +451,7 @@ function showtable_2(args, option) {
                             "</td><td>" + value.username + "</td><td>" + value.dormitoryname +
                             "</td><td>" + value.mobile + "</td><td>" + value.email +
                             "</td><td>" + stat_str + "</td><td><a href='javascript:delUser(" + value.account +
-                            ")'>删除</a><a href='javascript:void(0);'>编辑</a></td></tr>"
+                            ")'>删除</a>&nbsp;<a href='javascript:void(0);'>编辑</a></td></tr>"
                         $("#table_2 tbody").append(trs);
                     })
                     ajaxPageInf = data.pageInf;
@@ -474,7 +471,7 @@ function showtable_2(args, option) {
                             tds[4].innerHTML = data.data[i].mobile;
                             tds[5].innerHTML = data.data[i].email;
                             tds[6].innerHTML = data.data[i].status == 1 ? "在校" : "离校";
-                            tds[7].innerHTML = "<a href='javascript:void(0);' onclick='delUser(" + data.data[i].account + ")'>删除</a><a href='javascript:void(0);'>编辑</a>"
+                            tds[7].innerHTML = "<a href='javascript:void(0);' onclick='delUser(" + data.data[i].account + ")'>删除</a>&nbsp;<a href='javascript:void(0);'>编辑</a>"
                         } else {
                             trs.eq(i).css("display", "none")
                         }
@@ -519,7 +516,7 @@ function showtable_3(pageInf, dormName, option) {
         dataType: 'json',
         timeout: '10000',
         success: function (result) {
-            if (result.status == "200" && result.data != null) {
+            if (result.status == "200" && result.data.length != 0) {
                 var trs = null;
                 var data = result.data;
                 if (option == "reload") {
@@ -529,7 +526,7 @@ function showtable_3(pageInf, dormName, option) {
                         trs += "<tr><td><input type='checkbox'></td><td>" + value.dormitoryid +
                             "</td><td>" + value.dormitoryname + "</td><td>" + value.balance +
                             "</td><td><a href='javascript:delDorm(" + value.dormitoryid +
-                            ")'>删除</a><a href='javascript:void(0);'>编辑</a></td></tr>"
+                            ")'>删除</a>&nbsp;<a href='javascript:void(0);'>编辑</a></td></tr>"
 
                     })
                     $("#table_3 tbody").append(trs);
@@ -547,7 +544,7 @@ function showtable_3(pageInf, dormName, option) {
                             tds[1].innerHTML = data.data[i].dormitoryid;
                             tds[2].innerHTML = data.data[i].dormitoryname;
                             tds[3].innerHTML = data.data[i].balance;
-                            tds[4].innerHTML = "<a href='javascript:void(0);' onclick='delDorm(" + data.data[i].dormitoryid + ")'>删除</a><a href='javascript:void(0);'>编辑</a>"
+                            tds[4].innerHTML = "<a href='javascript:void(0);' onclick='delDorm(" + data.data[i].dormitoryid + ")'>删除</a>&nbsp;<a href='javascript:void(0);'>编辑</a>"
                         } else {
                             trs.eq(i).css("display", "none")
                         }
@@ -589,7 +586,7 @@ function showtable_4(args, option) {
         timeout: '10000',
         data: args,
         success: function (result) {
-            if (result.status == "200" && result.data != null) {
+            if (result.status == "200" && result.data.length != 0) {
                 var data = result.data;
                 if (option == "reload") {
                     ajaxPageInf = null;
@@ -599,7 +596,7 @@ function showtable_4(args, option) {
                             "</td><td>" + value.title + "</td><td><a href='javascript:showNoticContent(" + value.noticeid +
                             ")'>点击查看内容详情</a></td><td>" + value.publisher + "</td><td>" + value.publishdate +
                             "</td><td><a href='javascript:delNotice(" + value.noticeid +
-                            ")'>删除</a><a href='javascript:editNotice(" + value.noticeid + ")'>编辑</a></td></tr>"
+                            ")'>删除</a>&nbsp;<a href='javascript:editNotice(" + value.noticeid + ")'>编辑</a></td></tr>"
                         $("#table_4 tbody").append(trs);
                     })
                     ajaxPageInf = data.pageInf;
@@ -618,7 +615,7 @@ function showtable_4(args, option) {
                             tds[3].innerHTML = "<a href='javascript:showNoticContent(" + data.data[i].noticeid + ")'>点击查看内容详情</a>"
                             tds[4].innerHTML = data.data[i].publisher;
                             tds[5].innerHTML = data.data[i].publishdate;
-                            tds[6].innerHTML = "<a href='javascript:void(0);' onclick='delNotice(" + data.data[i].noticeid + ")'>删除</a><a href='javascript:void(0);'>编辑</a>"
+                            tds[6].innerHTML = "<a href='javascript:void(0);' onclick='delNotice(" + data.data[i].noticeid + ")'>删除</a>&nbsp;<a href='javascript:void(0);'>编辑</a>"
                         } else {
                             trs.eq(i).css("display", "none")
                         }
@@ -673,7 +670,7 @@ function getNoticeContent(noticeid) {
         dataType: 'json',
         async: false,
         success: function (result, status) {
-            if (result.status == "200" && result.data != null) {
+            if (result.status == "200" && result.data.length != 0) {
                 data = result.data;
             }
         }
@@ -730,7 +727,7 @@ function submitNotice() {
         timeout: '10000',
         data: args,
         success: function (result) {
-            if (result.status == '200' && result.data != null) {
+            if (result.status == '200' && result.data.length != 0) {
                 if (noticeid != null && noticeid != '') {
                     alert("已成功更新" + result.data + "条通告！")
                 } else {
@@ -790,7 +787,7 @@ function showtable_5(args, option) {
         timeout: '10000',
         data: args,
         success: function (result) {
-            if (result.status == "200" && result.data != null) {
+            if (result.status == "200" && result.data.length != 0) {
                 var data = result.data;
                 if (option == "reload") {
                     resetPagination(id, 2, defaultIndex)
@@ -800,7 +797,7 @@ function showtable_5(args, option) {
                             "</td><td>" + value.title + "</td><td><a href='javascript:showFBContent(" + value.fid +
                             ")'>点击查看内容详情</a></td><td>" + value.sender + "</td><td>" + status +
                             "</td><td>" + value.fdate + "</td><td><a href='javascript:delFeedback(" + value.fid +
-                            ")'>删除</a><a href='javascript:editNotice(" + value.fid + ")'>处理</a></td></tr>"
+                            ")'>删除</a>&nbsp;<a href='javascript:handle(" + value.fid + ")'>处理</a></td></tr>"
                         $("#table_5 tbody").append(trs);
                     })
                     ajaxPageInf = data.pageInf;
@@ -820,7 +817,7 @@ function showtable_5(args, option) {
                             tds[4].innerHTML = data.data[i].sender;
                             tds[5].innerHTML = (data.data[i].fstatus == 0 ? "未处理" : "已处理");
                             tds[6].innerHTML = data.data[i].fdate;
-                            tds[7].innerHTML = "<a href='javascript:void(0);' onclick='delFeedback(" + data.data[i].fid + ")'>删除</a><a href='javascript:void(0);'>编辑</a>"
+                            tds[7].innerHTML = "<a href='javascript:void(0);' onclick='delFeedback(" + data.data[i].fid + ")'>删除</a>&nbsp;<a href='javascript:handle(" + data.data[i].fid + ");'>处理</a>"
                         } else {
                             trs.eq(i).css("display", "none")
                         }
@@ -855,7 +852,7 @@ function showFBContent(fid) {
             $("#fbContent .modal-body").empty();
             $("#fbContent .modal-footer").empty();
 
-            if (result.status == "200" && result.data != null) {
+            if (result.status == "200" && result.data.length != 0) {
 
                 $("#fbContent .modal-title").append(result.data.title);
                 $("#fbContent .modal-body").append(result.data.content);
@@ -869,7 +866,31 @@ function showFBContent(fid) {
     })
 }
 
+
 //删除单条反馈
 function delFeedback(fid) {
     deleteBySelects("/feedback", fid);
+}
+
+//处理 修改反馈状态
+function handle(fid) {
+
+    if (!confirm("确定已处理该反馈，并将反馈状态设置为'已处理'么？")) {
+        return false;
+    }
+    var args = {fId: fid};
+    $.ajax({
+        type: 'GET',
+        url: '/feedback/handle',
+        data: args,
+        dataType: 'json',
+        async: false,
+        success: function (result, status) {
+            if (result.status == "200" && result.data.length != 0 && result.data == 1) {
+                alert("操作已完成！");
+            } else {
+                alert("操作失败，请稍后重试！");
+            }
+        }
+    })
 }

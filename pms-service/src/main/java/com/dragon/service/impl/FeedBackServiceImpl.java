@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service("feedBackService")
@@ -79,5 +80,22 @@ public class FeedBackServiceImpl implements FeedBackService {
             return null;
         }
         return mapper.selectByPrimaryKey(fId);
+    }
+
+    @Override
+    public Integer updateStatus(Integer fId) throws Exception {
+
+        Tfeedback feedback = getFBContent(fId);
+        feedback.setFstatus((short) 1);
+
+        return mapper.updateByPrimaryKeySelective(feedback);
+    }
+
+    @Override
+    public int addFeedBack(Tfeedback feedback) {
+        feedback.setFdate(new Date());
+        int num = mapper.insertSelective(feedback);
+
+        return num;
     }
 }

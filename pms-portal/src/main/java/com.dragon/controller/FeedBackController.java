@@ -8,9 +8,11 @@ import com.dragon.service.FeedBackService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/feedback")
@@ -60,22 +62,11 @@ public class FeedBackController {
         return PMSResult.Ok(feedback, "获取成功");
     }
 
+    @PostMapping("/add")
+    public PMSResult addFeedBack(Tfeedback feedback) {
 
-    @ApiOperation(value = "删除反馈", notes = "根据fIds删除反馈")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "fIds", value = "反馈id集合", dataType = "String", paramType = "query"),
-    })
-    @DeleteMapping("/{fIds}")
-    @RequiresPermissions("feedback:del:all")
-    public PMSResult delFeedback(
-            @PathVariable(value = "fIds") String fIds) {
-        Integer num = null;
-        try {
-            num = service.delFeedBacks(fIds);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return PMSResult.Fail();
-        }
+        int num = service.addFeedBack(feedback);
+
         return PMSResult.Ok(num, "success");
     }
 }

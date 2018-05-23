@@ -1,33 +1,17 @@
 package com.dragon.common.model;
 
+import com.dragon.common.PageSizeAndNum;
+
 import java.io.Serializable;
 
-public class Notice implements Serializable {
+public class Notice extends PageSizeAndNum implements Serializable {
 
     private static final long serialVersionUID = 3269444664964600058L;
-    private Integer pageNum;
-    private Integer pageSize;
 
     private String title;
     private String publisher;
     private String startDate;
     private String endDate;
-
-    public Integer getPageNum() {
-        return pageNum;
-    }
-
-    public void setPageNum(Integer pageNum) {
-        this.pageNum = pageNum;
-    }
-
-    public Integer getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
-    }
 
     public String getTitle() {
         return title;

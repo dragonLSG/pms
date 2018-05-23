@@ -143,7 +143,7 @@
                         </li>
 
                         <li class="menu_item" id="menu_6">
-                            <a href="javascript: void(0);"><i class="fi-paper"></i> <span>缴费管理</span> <span
+                            <a href="javascript: void(0);"><i class="fi-paper"></i><span>缴费管理</span><span
                                     class="menu-arrow"></span></a>
                         </li>
                     </ul>
@@ -188,6 +188,27 @@
                         <button onclick="genChart()" class="btn btn-default" style="margin-top: -5px;">确认切换</button>
                     </div>
                     <div id="container1" style="height: 80vh"></div>
+                </div>
+                <div class="modal fade" id="noDataNotice">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- 模态框头部 -->
+                            <div class="modal-header">
+                                <h2 class="modal-title">提示信息：</h2>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <!-- 模态框主体 -->
+                            <div class="modal-body">
+                                <h2 style="letter-spacing: 1px">当前所选视图时间范围内没有产生数据<br>
+                                    <br>若数据异常请联系管理员！谢谢！</h2>
+                            </div>
+                            <!-- 模态框底部 -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
             <!--用户管理模块-->
@@ -712,7 +733,6 @@
 
                             <!-- 模态框底部 -->
                             <div class="modal-footer">
-
                             </div>
 
                         </div>
@@ -723,38 +743,41 @@
             <div class="col-md-12 padding-0" id="module_6" style="display: none">
                 <div class="module_wrapper">
                     <div class="col-md-3">
-                        <div class="serchBar">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">缴费记录搜索</div>
-                                <div class="panel-body">
-                                    <table style="border:0;" class="serch_table">
-                                        <tr>
-                                            <td><span>标题</span></td>
-                                            <td><input type="text"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><span>状态</span></td>
-                                            <td><select>
-                                                <option selected>全部</option>
-                                                <option>未处理</option>
-                                                <option>已处理</option>
-                                            </select></td>
-                                        </tr>
-                                    </table>
-                                    <button class="btn btn-primary" type="button" style="margin:10px auto;"
-                                            value="搜索">搜索
-                                    </button>
-                                </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">缴费记录搜索</div>
+                            <div class="panel-body">
+                                <table style="border:0;" class="serch_table">
+                                    <tr>
+                                        <td><span>缴费日期</span></td>
+                                        <td>
+                                            <div style="display: flex">
+                                                始：<input type="date">
+                                            </div>
+                                            <div style="display: flex">
+                                                终：<input type="date">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span>状态</span></td>
+                                        <td><select>
+                                            <option selected>全部</option>
+                                            <option>未处理</option>
+                                            <option>已处理</option>
+                                        </select></td>
+                                    </tr>
+                                </table>
+                                <button class="btn btn-primary" type="button" style="margin:10px auto;"
+                                        value="搜索">搜索
+                                </button>
                             </div>
                         </div>
-                        <div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">操作</div>
-                                <div class="panel-body">
-                                    <button class="btn btn-danger" type="button" value="删除选中"
-                                            style="margin: auto">删除选中
-                                    </button>
-                                </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">操作</div>
+                            <div class="panel-body">
+                                <button class="btn btn-danger" type="button" value="删除选中"
+                                        style="margin: auto">删除选中
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -766,7 +789,6 @@
                                        id="table_6">
                                     <thead>
                                     <tr>
-                                        <th><input type="checkbox">全选</th>
                                         <th>账单号</th>
                                         <th>金额</th>
                                         <th>支付人</th>
@@ -778,20 +800,17 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td><input type="checkbox"></td>
                                         <td>1234567</td>
                                         <td>1023.23</td>
                                         <td>Kim</td>
                                         <td>西三536</td>
                                         <td>已支付</td>
                                         <td>2018-03-11</td>
-                                        <td><a href="javascript:void(0);">删除</a> <a href="javascript:void(0);">确认处理</a>
-                                        </td>
                                     </tr>
 
                                     </tbody>
                                 </table>
-                                <div class="pagination_bar bar_6">
+                                <div class="pagination_bar bar_4">
                                     <div class="SelectEvenNum">
                                         <div>每页</div>
                                         <select>
@@ -813,14 +832,13 @@
                                         <li><a href="javascript:void(0);">&rsaquo;</a></li>
                                         <li><a href="javascript:void(0);">&raquo;</a></li>
                                     </ul>
-                                    <div class="sumNum">共1000条数据</div>
+                                    <div class="sumNum">共0条数据</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div> <!-- content -->
 
         <footer class="footer text-right">

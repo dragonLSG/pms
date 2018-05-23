@@ -10,7 +10,10 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/notice")
@@ -74,22 +77,5 @@ public class NoticeController {
         return PMSResult.Ok(num, "操作成功");
     }
 
-    @ApiOperation(value = "删除通告", notes = "删除Ids对应的通告")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "noticeIds", value = "通告ids", dataType = "String", paramType = "query"),
-    })
-    @DeleteMapping("/{noticeId}")
-    @RequiresPermissions("notice:del:all")
-    public PMSResult deleteNotice(
-            @PathVariable(value = "noticeId") String noticeIds) {
-        Integer num = null;
-        try {
-            num = service.delNotices(noticeIds);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return PMSResult.Fail();
-        }
-        return PMSResult.Ok(num, "获取成功");
-    }
 }
 

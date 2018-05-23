@@ -1,12 +1,12 @@
 package com.dragon.common.model;
 
+import com.dragon.common.PageSizeAndNum;
+
 import java.io.Serializable;
 
-public class FeedBack implements Serializable {
+public class FeedBack extends PageSizeAndNum implements Serializable {
 
     private static final long serialVersionUID = 3839764126206189353L;
-    private Integer pageNum;
-    private Integer pageSize;
 
     private String title;
     private String startDate;
@@ -20,22 +20,6 @@ public class FeedBack implements Serializable {
 
     public void setSender(String sender) {
         this.sender = sender;
-    }
-
-    public Integer getPageNum() {
-        return pageNum;
-    }
-
-    public void setPageNum(Integer pageNum) {
-        this.pageNum = pageNum;
-    }
-
-    public Integer getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
     }
 
     public String getTitle() {

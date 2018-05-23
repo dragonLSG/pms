@@ -307,7 +307,7 @@ function showtable_3() {
         data: args,
         dataType: 'json',
         success: function (result, status) {
-            if (result.status == "200" && result.data != null) {
+            if (result.status == "200" && result.data.length != 0) {
                 var data = result.data;
                 var input = $("#table_2 input");
 
@@ -337,7 +337,7 @@ function showtable_1(args, option) {
         async: false,
         data: args,
         success: function (result) {
-            if (result.status == "200" && result.data != null) {
+            if (result.status == "200" && result.data.length != 0) {
                 var data = result.data;
                 if (option == "reload") {
                     $.each(data.data, function (key, value) {
@@ -387,7 +387,7 @@ function showNoticeContent(noticeid) {
         data: args,
         dataType: 'json',
         success: function (result, status) {
-            if (result.status == "200" && result.data != null) {
+            if (result.status == "200" && result.data.length != 0) {
                 var data = result.data;
                 var content = "<h2 style='text-align: center'>" + data.title + "</h2>"
                 content += data.content;
@@ -436,7 +436,7 @@ function showtable_6(args, option) {
         timeout: '10000',
         data: args,
         success: function (result) {
-            if (result.status == "200" && result.data != null) {
+            if (result.status == "200" && result.data.length != 0) {
                 var data = result.data;
                 if (option == "reload") {
                     $.each(data.data, function (key, value) {
@@ -497,7 +497,7 @@ function showFBContent(fid) {
             $("#fbContent .modal-body").empty();
             $("#fbContent .modal-footer").empty();
 
-            if (result.status == "200" && result.data != null) {
+            if (result.status == "200" && result.data.length != 0) {
 
                 $("#fbContent .modal-title").append("title：" + result.data.title);
                 $("#fbContent .modal-body").append(result.data.content);
@@ -510,6 +510,40 @@ function showFBContent(fid) {
         }
     })
 }
+
+function submitFB() {
+
+    var title = $("#addFBModal .modal-title input").val().trim();
+    var content = fbEditor.txt.html().trim();
+    var sender = $("#account").text().trim();
+    if (title == "") {
+        alert("标题不能为空！");
+        return false;
+    }
+    if (content == "") {
+        alert("内容不能为空！")
+        return false;
+    }
+    var args = {title: title, content: content, sender: sender}
+    $.ajax({
+        type: 'POST',
+        url: '/feedback/add',
+        data: args,
+        dataType: 'json',
+        async: false,
+        success: function (result, status) {
+            if (result.status == "200" && result.data.length != 0) {
+                alert("反馈提交成功！");
+            } else {
+                alert("操作失败！");
+            }
+            $("#addFBModal").modal("hide");
+            showtable_6(getSearchFeedbackInf("all"), "reload")
+        }
+    })
+}
+
+
 
 //创建富文本编辑器
 function createRichEditor() {

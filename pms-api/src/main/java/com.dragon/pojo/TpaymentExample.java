@@ -296,7 +296,7 @@ public class TpaymentExample {
             return (Criteria) this;
         }
 
-        public Criteria andPaystatusEqualTo(Integer value) {
+        public Criteria andPaystatusEqualTo(Short value) {
             addCriterion("paystatus =", value, "paystatus");
             return (Criteria) this;
         }

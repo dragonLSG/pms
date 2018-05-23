@@ -3,6 +3,7 @@ package com.dragon.controller;
 import com.dragon.common.DataList;
 import com.dragon.common.PMSResult;
 import com.dragon.common.model.User;
+import com.dragon.pojo.Tuser;
 import com.dragon.service.UserService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -62,5 +63,20 @@ public class UserController {
         return PMSResult.Ok(num, "删除成功");
     }
 
+    @PostMapping("/add")
+    public PMSResult addUser(Tuser user) {
+        Integer num = null;
+        try {
+            num = userService.addUser(user);
+        } catch (Exception e) {
+            return PMSResult.Fail("操作失败，请稍后重试！");
+        }
+        return PMSResult.Ok(num, "success");
+    }
+
+    @PostMapping("/update")
+    public PMSResult updateUserInfo(Tuser user) {
+        return PMSResult.Ok();
+    }
 
 }
