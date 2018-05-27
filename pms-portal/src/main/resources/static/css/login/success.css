@@ -1,0 +1,31 @@
+.card {
+    background: linear-gradient(to right bottom, whitesmoke, green);
+    box-shadow: 10px 10px 5px #888888;
+    margin: 15% auto;
+    border-color: rgb(73, 160, 5);
+    width: 70%;
+}
+
+.card-body {
+    margin: auto;
+    width: 60%
+}
+
+.card-title {
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    .container {
+        width: 99% !important;
+    }
+
+    .card {
+        width: 100% !important;
+    }
+
+    .card-body {
+        width: 90%;
+    }
+}

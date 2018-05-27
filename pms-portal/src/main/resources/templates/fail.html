@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" class="login-content" data-ng-app="materialAdmin" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>电力管理系统</title>
+
+    <link rel="shortcut icon" href="/img/favicon.ico"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/login/success.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="container">
+    <div class="card" style="background: linear-gradient(to right bottom, whitesmoke,red);">
+        <div class="card-body">
+            <!--/*@thymesVar id="msg" type="String"*/-->
+            <h4 class="card-title" th:text="${msg}"></h4>
+            <div>
+                <p class="card-text">登陆系统后您可以：</p>
+                <p class="card-text"><1> 查询账户用电情况</p>
+                <p class="card-text"><2> 充值账户，查询充值记录</p>
+                <p class="card-text"><3> 查询账户余额</p>
+                <a href="/login.html" class="card-link"><span id="time">10</span>秒后自动转到登陆</a>
+                <a href="/login.html" class="card-link">立即登陆</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer style="position:fixed;bottom:0px;width: 100%;text-align: center">
+    2017 - 2018 © Abstack. - Coderthemes.com
+</footer>
+
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    var num;
+    $(function () {
+        num = self.setInterval("setTime()", 1000);
+    })
+
+    function setTime() {
+        var time = parseInt($("#time").text());
+        if (time == 0) {
+            window.clearInterval(num);
+            window.location.href = "/login.html";
+        } else {
+            $("#time").text(--time);
+        }
+    }
+
+</script>
+</html>
